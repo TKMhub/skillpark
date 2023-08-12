@@ -2,7 +2,6 @@ import { Canvas } from "@react-three/fiber";
 import {
   ContactShadows,
   Float,
-  OrbitControls,
   PresentationControls,
   Text,
   useGLTF,
@@ -19,7 +18,7 @@ const CanvasmackbookModel = () => {
         <pointLight position={[0, 6, 5]} intensity={1000} />
         <PresentationControls
           config={{ mass: 4, tention: 400 }}
-          snap={{ mass: 4, tention: 300 }}
+          snap={{ mass: 4 }}
         >
           <Text
             fontSize={0.6}
@@ -30,7 +29,10 @@ const CanvasmackbookModel = () => {
           </Text>
           <Float rotationIntensity={1.5}>
             <rectAreaLight />
-            <primitive object={macbookModel.scene} scale={[1.2, 1.2, 1.2]} />
+            <primitive
+              object={macbookModel.scene}
+              scale={[1.2, 1.2, 1.2]}
+            ></primitive>
           </Float>
         </PresentationControls>
         <ContactShadows scale={7} blur={2.4} opacity={0.7} position-y={-2.0} />

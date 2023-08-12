@@ -2,6 +2,7 @@
 import styles from "./Top.module.scss";
 import TextEffect from "./conponents/designParts/TextEffect";
 import { motion } from "framer-motion";
+import CanvasmackbookModel from "./conponents/designParts/Canvas.module.scss/CanvasmackbookModel";
 
 export default function Home() {
   const variants = {
@@ -18,9 +19,12 @@ export default function Home() {
           variants={variants}
           transition={{ type: "spring", stiffness: 10, damping: 6 }}
         >
-          <TextEffect title="skillPark" id="title" />
+          <div className="flex">
+            <TextEffect title="skillPark" id="title" />
+          </div>
         </motion.div>
       </div>
+      <CanvasmackbookModel />
     </>
   );
 }

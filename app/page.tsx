@@ -19,12 +19,12 @@ export default function Home() {
           variants={variants}
           transition={{ type: "spring", stiffness: 10, damping: 6 }}
         >
-          <div className="flex">
+          <div className="inline">
             <TextEffect title="skillPark" id="title" />
+            <CanvasmackbookModel />
           </div>
         </motion.div>
       </div>
-      <CanvasmackbookModel />
     </>
   );
 }

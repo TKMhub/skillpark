@@ -1,4 +1,6 @@
-.canvasStyle {
-  width: 1200px;
-  height: 1200px;
+.Canvas {
+  height: 450px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end; /* 要素を下部に配置 */
 }

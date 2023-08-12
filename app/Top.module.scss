@@ -1,0 +1,10 @@
+@import "./globalcss/Global.module.scss";
+
+.background {
+  margin-bottom: 4em;
+  padding: 20rem;
+  background-image: linear-gradient(25deg, #005baa, #2ab0f0);
+  font-family: "Roboto", sans-serif;
+  font-size: 8em;
+  color: #fff;
+}

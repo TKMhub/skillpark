@@ -3,13 +3,8 @@ import React, { useState, useRef, useEffect } from "react";
 import { Box, Button, TextField, Typography } from "@mui/material";
 import styled from "@emotion/styled";
 import Link from "next/link";
-
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { useRouter } from "next/router";
 import { app } from "../../firebase";
-
-// Authの取得
-const auth = getAuth(app);
 
 const LoginContainer = styled(Box)`
   display: flex;
@@ -67,68 +62,83 @@ const Login = () => {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      const user = userCredential.user;
-      console.log("ログイン成功", user);
-
-      // 追加: 成功したら/seikouへリダイレクト
-      // router.push("/seikou");
-    } catch (error) {
-      console.error("ログイン失敗", error);
-    }
+  const handleSubmit = (e: React.FormEvent) => {
+    console.log("ログイン処理");
+    // e.preventDefault();
+    const auth = getAuth(app);
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        // ...
+        console.log(user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(error);
+      });
+    console.log("終了");
   };
+  useEffect(() => {
+    console.log("ログイン処理");
+    const auth = getAuth(app);
+    signInWithEmailAndPassword(auth, "test@test.com", "testtest")
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        // ...
+        console.log(user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(error);
+      });
+    console.log("終了");
+  }, []);
 
   return (
-    <LoginContainer>
-      <FormBox>
-        <Typography variant="subtitle1" align="center" gutterBottom>
-          ユーザーログインをしてください。
+    <>
+      <LoginContainer>
+        <FormBox>
+          <Typography variant="subtitle1" align="center" gutterBottom>
+            ユーザーログインをしてください。
+          </Typography>
+          <form onSubmit={handleSubmit}>
+            <StyledTextField
+              label="Email"
+              type="email"
+              value={email}
+              onChange={handleEmailChange}
+              required
+              fullWidth
+              inputProps={{
+                ref: emailRef,
+              }}
+            />
+            <StyledTextField
+              label="Password"
+              type="password"
+              value={password}
+              onChange={handlePasswordChange}
+              required
+              fullWidth
+            />
+            <Button type="submit" variant="contained" color="primary" fullWidth>
+              Login
+            </Button>
+          </form>
+        </FormBox>
+        <Typography variant="body2" align="center">
+          <Link href="/auth/signup">新規登録はこちら</Link>
         </Typography>
-        <form onSubmit={handleSubmit}>
-          <StyledTextField
-            label="Email"
-            type="email"
-            value={email}
-            onChange={handleEmailChange}
-            required
-            fullWidth
-            inputProps={{
-              ref: emailRef,
-              style: { color: "#ffffff" },
-            }}
-          />
-          <StyledTextField
-            label="Password"
-            type="password"
-            value={password}
-            onChange={handlePasswordChange}
-            required
-            fullWidth
-            inputProps={{
-              style: { color: "#ffffff" },
-            }}
-          />
-          <Button type="submit" variant="contained" color="primary" fullWidth>
-            Login
-          </Button>
-        </form>
-      </FormBox>
-      <Typography variant="body2" align="center">
-        <Link href="/auth/signup">新規登録はこちら</Link>
-      </Typography>
-      <br />
-      <Typography variant="body2" align="center">
-        <Link href="/auth/password">パスワードをお忘れですか？</Link>
-      </Typography>
-    </LoginContainer>
+        <br />
+        <Typography variant="body2" align="center">
+          <Link href="/auth/password">パスワードをお忘れですか？</Link>
+        </Typography>
+      </LoginContainer>
+    </>
   );
 };
 

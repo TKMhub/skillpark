@@ -30,12 +30,12 @@
 .contentsWrapper {
   position: relative;
   height: 100vh;
+  margin-bottom: 4em;
 
   // 以降のTextEffectコンポーネント用のスタイル（共通）
   .titleDetail {
     position: relative;
     color: $mian-blue;
-    top: 18vh;
     margin-left: 100px;
     font-size: 3rem;
     font-style: italic;

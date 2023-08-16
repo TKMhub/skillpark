@@ -2,9 +2,44 @@
 import styles from "./Top.module.scss";
 import TextEffect from "./conponents/designParts/TextEffect";
 import { motion } from "framer-motion";
-import CanvasmackbookModel from "./conponents/designParts/Canvas.module.scss/CanvasmackbookModel";
+import CanvasmackbookModel from "./conponents/designParts/Canvas/CanvasmackbookModel";
 import CommingSoon from "./conponents/designParts/CommingSoon/CommingSoon";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Box, Grid, Paper, styled } from "@mui/material";
+
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: "#6bbaff",
+  backdropFilter: "blur(5px)",
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  margin: "30px",
+  textAlign: "center",
+  color: theme.palette.text.secondary,
+  // 以下は追加部分
+  position: "relative",
+  paddingBottom: "60%", // これで正方形になります
+  "& > div": {
+    position: "absolute",
+    width: "100%",
+    height: "100%",
+  },
+}));
+
+function FormRow() {
+  return (
+    <React.Fragment>
+      <Grid item xs={4}>
+        <Item>Item</Item>
+      </Grid>
+      <Grid item xs={4}>
+        <Item>Item</Item>
+      </Grid>
+      <Grid item xs={4}>
+        <Item>Item</Item>
+      </Grid>
+    </React.Fragment>
+  );
+}
 
 export default function Home() {
   // スクロール位置の状態を定義します.
@@ -77,11 +112,15 @@ export default function Home() {
           variants={variants2}
           transition={{ type: "spring", stiffness: 7, damping: 6 }}
         >
-          <TextEffect
-            title="application's features."
-            className={styles.titleDetail}
-            id="sndpg"
-          />
+          <TextEffect title="Menu" className={styles.titleDetail} id="sndpg" />
+          <Grid container spacing={1}>
+            <Grid container item spacing={3}>
+              <FormRow />
+            </Grid>
+            <Grid container item spacing={3}>
+              <FormRow />
+            </Grid>
+          </Grid>
         </motion.div>
         <a className={styles.Scroll} href="#third">
           Scroll

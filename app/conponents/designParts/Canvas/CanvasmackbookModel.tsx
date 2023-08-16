@@ -16,10 +16,7 @@ const CanvasmackbookModel = () => {
       <Canvas camera={{ position: [0, 2, 5], fov: 70, near: 0.1, far: 2000 }}>
         <ambientLight />
         <pointLight position={[0, 6, 5]} intensity={1000} />
-        <PresentationControls
-          config={{ mass: 4, tention: 400 }}
-          snap={{ mass: 4 }}
-        >
+        <PresentationControls config={{ mass: 4 }} snap={{ mass: 4 }}>
           <Text
             fontSize={0.6}
             position={[0, 2.525, 0.75]}

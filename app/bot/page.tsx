@@ -13,10 +13,9 @@ interface Message {
   isBot: boolean;
 }
 
-const box: FunctionComponent = () => {
+const Box: FunctionComponent = () => {
   const [messages, setMessages] = useState<Array<Message>>([]);
   const [message, setMessage] = useState<string>("");
-  const [isMobile, setIsMobile] = useState(false);
 
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
@@ -124,4 +123,4 @@ const box: FunctionComponent = () => {
   );
 };
 
-export default box;
+export default Box;

@@ -21,7 +21,7 @@ const Header = () => {
           <Link href="/" className={styles.Header_right_item_link}>
             TOP
           </Link>
-          <Link href="/bot" className={styles.Header_right_item_link}>
+          <Link href="/Bot" className={styles.Header_right_item_link}>
             Bot
           </Link>
           <Link href="/" className={styles.Header_right_item_link}>

@@ -29,7 +29,7 @@ const CanvasmackbookModel = () => {
               position={[0, 2.525, 0.75]}
               rotation={[-0.2, 0, 0]}
             >
-              We assist in skill acquisition through our service.
+              We will support you to have fun and learn skills.
             </Text>
           </Float>
           <Float rotationIntensity={1.5}>

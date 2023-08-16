@@ -1,5 +1,7 @@
+@import "../../../app/globalcss/Global.module.scss";
+
 .Header {
-  background: #b7ffff44;
+  background: $mian-blue;
   backdrop-filter: blur(20px);
   position: fixed;
   top: 0;

@@ -81,7 +81,7 @@
       left: -30%;
       transform: rotate(30deg);
       width: 70px;
-      height: 100px;
+      height: 150px;
       content: "";
       background-image: linear-gradient(
         to left,
@@ -97,7 +97,7 @@
         color-stop(50%, rgba(255, 255, 255, 1)),
         color-stop(100%, rgba(255, 255, 255, 0))
       );
-      animation: animation-startedButton 2s infinite linear;
+      animation: animation-startedButton 1.3s infinite linear;
     }
 
     @keyframes animation-startedButton {

@@ -22,6 +22,7 @@ const PasswordContainer = styled(Box)`
 const FormBox = styled(Box)`
   display: flex;
   flex-direction: column;
+  background-color: #ffffff;
   width: 100%;
   max-width: 420px;
   padding: 2rem;
@@ -38,7 +39,6 @@ const FormBox = styled(Box)`
 const StyledTextField = styled(TextField)`
   margin-top: 20px;
   margin-bottom: 20px;
-  color: #ffffff !important;
 `;
 
 const Password = () => {

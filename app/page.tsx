@@ -77,8 +77,6 @@ export default function Home() {
     visible: { opacity: scrollY > 1000 ? 1 : 0 }, // 100px以上スクロールしたら表示.
   };
 
-  console.log(scrollY);
-
   return (
     <>
       {/* セクション -TOP */}

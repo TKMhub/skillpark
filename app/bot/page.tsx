@@ -77,7 +77,7 @@ const Box: FunctionComponent = () => {
               QA bot
               <br />
               <p className="text-center text-base block font-medium  mt-3">
-                CodePartsに関しての質問を承ります。
+                skillParkに関しての質問を承ります。
               </p>
             </span>
             <p></p>

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import CanvasmackbookModel from "./conponents/designParts/Canvas/CanvasmackbookModel";
 import CommingSoon from "./conponents/designParts/CommingSoon/CommingSoon";
 import React, { useEffect, useState } from "react";
-import { Box, Grid, Paper, styled } from "@mui/material";
+import { Grid, Paper, styled } from "@mui/material";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: "#6bbaff",
@@ -75,7 +75,7 @@ export default function Home() {
   // スクロール位置に基づいてアニメーションの状態を設定します.
   const variants3 = {
     hidden: { opacity: 0 },
-    visible: { opacity: scrollY > 1500 ? 1 : 0 }, // 100px以上スクロールしたら表示.
+    visible: { opacity: scrollY > 1000 ? 1 : 0 }, // 100px以上スクロールしたら表示.
   };
 
   console.log(scrollY);
@@ -112,7 +112,7 @@ export default function Home() {
           variants={variants2}
           transition={{ type: "spring", stiffness: 7, damping: 6 }}
         >
-          <TextEffect title="Menu" className={styles.titleDetail} id="sndpg" />
+          <TextEffect title="Menu" className={styles.titleDetail} id="two" />
           <Grid container spacing={1}>
             <Grid container item spacing={3}>
               <FormRow />
@@ -138,15 +138,17 @@ export default function Home() {
           <TextEffect
             title="Let's start now."
             className={styles.titleDetail}
-            id="sndpg"
+            id="three"
           />
+          <p className={styles.titleContents}>
+            始めるには次のボタンを押してください。
+          </p>
+          <button className={styles.startedButton}>Get Started！</button>
         </motion.div>
         <a className={styles.ScrollEnd} href="#first">
           TOP
         </a>
       </section>
-
-      <CommingSoon />
     </>
   );
 }

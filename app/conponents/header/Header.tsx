@@ -2,15 +2,13 @@
 import React from "react";
 import Link from "next/link";
 import styles from "./Header.module.scss";
-import Image from "next/image";
-import TopLogo from "public/codeParts_Black.svg";
 import { Button } from "@mui/material";
-import Stack from "@mui/material/Stack";
 
 const Header = () => {
   return (
     <div className={styles.Header}>
       <Link href="/">
+        {/* ロゴを挿入 */}
         {/* <Image
           src={TopLogo}
           style={{ width: "100px" }}

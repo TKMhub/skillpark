@@ -1,0 +1,21 @@
+@import "../../../app/globalcss/Global.module.scss";
+
+.Footer {
+  background-image: linear-gradient(25deg, $mian-blue, #2ab0f0);
+  padding: 50px;
+  font-family: $font-future;
+  font-size: 1rem;
+  color: #fff;
+  text-align: center;
+
+  &_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    border-bottom: 0.5px solid #cccccc84;
+    &_link {
+      display: flex;
+    }
+  }
+}

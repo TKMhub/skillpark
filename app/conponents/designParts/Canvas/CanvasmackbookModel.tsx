@@ -19,14 +19,19 @@ const CanvasmackbookModel = () => {
       <Canvas camera={{ position: [0, 2, 5], fov: 70, near: 0.1, far: 2000 }}>
         <ambientLight />
         <pointLight position={[0, 6, 5]} intensity={1000} />
-        <PresentationControls config={{ mass: 4 }} snap={{ mass: 4 }}>
-          <Text
-            fontSize={0.6}
-            position={[0, 2.525, 0.75]}
-            rotation={[-0.2, 0, 0]}
-          >
-            We assist in skill acquisition through our service.
-          </Text>
+        <PresentationControls
+          config={{ mass: 4, tention: 400 }}
+          snap={{ mass: 4 }}
+        >
+          <Float rotationIntensity={0.4}>
+            <Text
+              fontSize={0.6}
+              position={[0, 2.525, 0.75]}
+              rotation={[-0.2, 0, 0]}
+            >
+              We assist in skill acquisition through our service.
+            </Text>
+          </Float>
           <Float rotationIntensity={1.5}>
             <rectAreaLight />
             <Model />

@@ -20,10 +20,8 @@ const Box: FunctionComponent = () => {
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
 
-    // Update the messages array with the user's message
     setMessages([...messages, { text: message, isBot: false }]);
 
-    // Send the user's message to the OpenAI API
     const response = await axios.post(
       "https://api.openai.com/v1/chat/completions",
       {
@@ -46,7 +44,6 @@ const Box: FunctionComponent = () => {
       }
     );
 
-    // Update the messages array with the bot's response
     setMessages([
       ...messages,
       { text: response.data.choices[0].message.content, isBot: true },

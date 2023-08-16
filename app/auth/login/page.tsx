@@ -7,6 +7,7 @@ import Link from "next/link";
 const LoginContainer = styled(Box)`
   display: flex;
   flex-direction: column;
+  background-color: #f5f5f5;
   align-items: center;
   justify-content: center;
   height: 100vh;
@@ -21,14 +22,16 @@ const LoginContainer = styled(Box)`
 
 const FormBox = styled(Box)`
   display: flex;
+  background-color: #ffffff;
   flex-direction: column;
   width: 100%;
   max-width: 420px;
-  padding: 2rem;
+  padding: 5rem;
   border-radius: 10px;
-  background-color: rgba(56, 56, 56, 0.7);
+  border: 1px solid #1876d2;
   margin-bottom: 2rem;
   backdrop-filter: blur(50px);
+  box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.75);
 
   @media (max-width: 768px) {
     padding: 1rem;
@@ -36,9 +39,7 @@ const FormBox = styled(Box)`
 `;
 
 const StyledTextField = styled(TextField)`
-  margin-top: 20px;
-  margin-bottom: 20px;
-  color: #ffffff !important;
+  margin-bottom: 30px;
 `;
 
 const Login = () => {
@@ -101,15 +102,13 @@ const Login = () => {
           </Button>
         </form>
       </FormBox>
-      <Box mt={2}>
-        <Typography variant="body2" align="center">
-          <Link href="/auth/signup">新規登録はこちら</Link>
-        </Typography>
-        <br />
-        <Typography variant="body2" align="center">
-          <Link href="/auth/password">パスワードをお忘れですか？</Link>
-        </Typography>
-      </Box>
+      <Typography variant="body2" align="center">
+        <Link href="/auth/signup">新規登録はこちら</Link>
+      </Typography>
+      <br />
+      <Typography variant="body2" align="center">
+        <Link href="/auth/password">パスワードをお忘れですか？</Link>
+      </Typography>
     </LoginContainer>
   );
 };

@@ -3,7 +3,6 @@ import styles from "./Top.module.scss";
 import TextEffect from "./conponents/designParts/TextEffect";
 import { motion } from "framer-motion";
 import CanvasmackbookModel from "./conponents/designParts/Canvas/CanvasmackbookModel";
-import CommingSoon from "./conponents/designParts/CommingSoon/CommingSoon";
 import React, { useEffect, useState } from "react";
 import { Grid, Paper, styled } from "@mui/material";
 

@@ -123,11 +123,9 @@ const Signup = () => {
           </Button>
         </form>
       </FormBox>
-      <Box mt={2}>
-        <Typography variant="body2">
-          <Link href="/auth/login">ログインはこちら</Link>
-        </Typography>
-      </Box>
+      <Typography variant="body2">
+        <Link href="/auth/login">ログインはこちら</Link>
+      </Typography>
     </SignupContainer>
   );
 };

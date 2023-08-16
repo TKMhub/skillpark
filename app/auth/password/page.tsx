@@ -94,15 +94,13 @@ const Password = () => {
           </Button>
         </form>
       </FormBox>
-      <Box mt={2}>
-        <Typography variant="body2" align="center">
-          <Link href="/auth/signup">新規登録はこちら</Link>
-        </Typography>
-        <br />
-        <Typography variant="body2" align="center">
-          <Link href="/auth/login">ログインはこちら</Link>
-        </Typography>
-      </Box>
+      <Typography variant="body2" align="center">
+        <Link href="/auth/signup">新規登録はこちら</Link>
+      </Typography>
+      <br />
+      <Typography variant="body2" align="center">
+        <Link href="/auth/login">ログインはこちら</Link>
+      </Typography>
     </PasswordContainer>
   );
 };

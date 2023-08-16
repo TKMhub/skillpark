@@ -7,6 +7,7 @@ import Link from "next/link";
 const PasswordContainer = styled(Box)`
   display: flex;
   flex-direction: column;
+  background-color: #f5f5f5;
   align-items: center;
   justify-content: center;
   height: 100vh;
@@ -27,9 +28,9 @@ const FormBox = styled(Box)`
   max-width: 420px;
   padding: 2rem;
   border-radius: 10px;
-  background-color: rgba(56, 56, 56, 0.7);
   margin-bottom: 2rem;
   backdrop-filter: blur(50px);
+  box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.75);
 
   @media (max-width: 768px) {
     padding: 1rem;
@@ -52,10 +53,6 @@ const Password = () => {
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
-  };
-
-  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value);
   };
 
   const handleSubmit = (e: React.FormEvent) => {

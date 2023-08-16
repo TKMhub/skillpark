@@ -25,6 +25,7 @@ const FormBox = styled(Box)`
   display: flex;
   flex-direction: column;
   width: 100%;
+  background-color: #ffffff;
   max-width: 420px;
   padding: 2rem;
   border-radius: 10px;

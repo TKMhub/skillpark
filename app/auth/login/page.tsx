@@ -4,6 +4,9 @@ import { Box, Button, TextField, Typography } from "@mui/material";
 import styled from "@emotion/styled";
 import Link from "next/link";
 
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { useRouter } from "next/router";
+
 const LoginContainer = styled(Box)`
   display: flex;
   flex-direction: column;
@@ -46,6 +49,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const emailRef = useRef<HTMLInputElement>(null);
+  const router = useRouter();
 
   useEffect(() => {
     emailRef.current?.focus();
@@ -59,12 +63,25 @@ const Login = () => {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // ログイン録処理
-    console.log("Email: ", email);
-    console.log("Password: ", password);
+    const auth = getAuth();
+
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+      console.log("ログイン成功", user);
+
+      // 追加: 成功したら/seikouへリダイレクト
+      router.push("/seikou");
+    } catch (error) {
+      console.error("ログイン失敗", error);
+    }
   };
 
   return (

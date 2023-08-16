@@ -104,51 +104,53 @@ export default function Home() {
         </a>
       </section>
 
-      {/* セクション -2- */}
-      <section className={styles.contentsWrapper} id="second">
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={variants2}
-          transition={{ type: "spring", stiffness: 7, damping: 6 }}
-        >
-          <TextEffect title="Menu" className={styles.titleDetail} id="two" />
-          <Grid container spacing={1}>
-            <Grid container item spacing={3}>
-              <FormRow />
+      <main className={styles.mainColor}>
+        {/* セクション -2- */}
+        <section className={styles.contentsWrapper} id="second">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={variants2}
+            transition={{ type: "spring", stiffness: 7, damping: 6 }}
+          >
+            <TextEffect title="Menu" className={styles.titleDetail} id="two" />
+            <Grid container spacing={1}>
+              <Grid container item spacing={3}>
+                <FormRow />
+              </Grid>
+              <Grid container item spacing={3}>
+                <FormRow />
+              </Grid>
             </Grid>
-            <Grid container item spacing={3}>
-              <FormRow />
-            </Grid>
-          </Grid>
-        </motion.div>
-        <a className={styles.Scroll} href="#third">
-          Scroll
-        </a>
-      </section>
+          </motion.div>
+          <a className={styles.Scroll} href="#third">
+            Scroll
+          </a>
+        </section>
 
-      {/* セクション -3- */}
-      <section className={styles.contentsWrapper} id="third">
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={variants3}
-          transition={{ type: "spring", stiffness: 7, damping: 6 }}
-        >
-          <TextEffect
-            title="Let's start now."
-            className={styles.titleDetail}
-            id="three"
-          />
-          <p className={styles.titleContents}>
-            始めるには次のボタンを押してください。
-          </p>
-          <button className={styles.startedButton}>Get Started！</button>
-        </motion.div>
-        <a className={styles.ScrollEnd} href="#first">
-          TOP
-        </a>
-      </section>
+        {/* セクション -3- */}
+        <section className={styles.contentsWrapper} id="third">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={variants3}
+            transition={{ type: "spring", stiffness: 7, damping: 6 }}
+          >
+            <TextEffect
+              title="Let's start now."
+              className={styles.titleDetail}
+              id="three"
+            />
+            <p className={styles.titleContents}>
+              始めるには次のボタンを押してください。
+            </p>
+            <button className={styles.startedButton}>Get Started！</button>
+          </motion.div>
+          <a className={styles.ScrollEnd} href="#first">
+            TOP
+          </a>
+        </section>
+      </main>
     </>
   );
 }

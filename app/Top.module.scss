@@ -26,89 +26,91 @@
   }
 }
 
-// セクション共通スタイル
-.contentsWrapper {
-  position: relative;
-  height: 100vh;
-  margin-bottom: 4em;
-
-  p {
-    margin-left: 1000px;
-    font-family: $font-future;
-  }
-
-  // 以降のTextEffectコンポーネント用のスタイル（共通）
-  .titleDetail {
+.mainColor {
+  // セクション共通スタイル
+  .contentsWrapper {
     position: relative;
-    color: $mian-blue;
-    margin-left: 100px;
-    font-size: 3rem;
-    font-style: italic;
-    transition: color 0.2s linear;
+    height: 100vh;
+    margin-bottom: 4em;
 
-    &:hover {
-      cursor: cell;
-      transition-delay: 0.2s;
+    p {
+      padding-left: 100px;
+      font-family: $font-future;
+    }
+
+    // 以降のTextEffectコンポーネント用のスタイル（共通）
+    .titleDetail {
+      position: relative;
       color: $mian-blue;
-    }
-  }
-  p {
-    margin: 35px 0 0 50px;
-  }
-  .startedButton {
-    top: 10rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    width: 300px;
-    margin: 0 auto;
-    padding: 1em 2em;
-    overflow: hidden;
-    border: none;
-    border-radius: 10px;
-    background-color: #2589d0;
-    color: #fff;
-    font-weight: 600;
-    font-size: 1.2em;
-  }
+      margin-left: 100px;
+      font-size: 3rem;
+      font-style: italic;
+      transition: color 0.2s linear;
 
-  .startedButton::before {
-    display: block;
-    position: absolute;
-    top: -50%;
-    left: -30%;
-    transform: rotate(30deg);
-    width: 70px;
-    height: 100px;
-    content: "";
-    background-image: linear-gradient(
-      to left,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(255, 255, 255, 1) 50%,
-      rgba(255, 255, 255, 0) 100%
-    );
-    background-image: -webkit-gradient(
-      linear,
-      left bottom,
-      right bottom,
-      color-stop(0%, rgba(255, 255, 255, 0)),
-      color-stop(50%, rgba(255, 255, 255, 1)),
-      color-stop(100%, rgba(255, 255, 255, 0))
-    );
-    animation: animation-startedButton 2s infinite linear;
-  }
-
-  @keyframes animation-startedButton {
-    17% {
-      left: 120%;
+      &:hover {
+        cursor: cell;
+        transition-delay: 0.2s;
+        color: $mian-blue;
+      }
     }
-    100% {
-      left: 120%;
+    p {
+      margin: 35px 0 0 50px;
     }
-  }
+    .startedButton {
+      top: 10rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      width: 300px;
+      margin: 0 auto;
+      padding: 1em 2em;
+      overflow: hidden;
+      border: none;
+      border-radius: 10px;
+      background-color: #2589d0;
+      color: #fff;
+      font-weight: 600;
+      font-size: 1.2em;
+    }
 
-  .startedButton:hover {
-    background-color: #1579c0;
+    .startedButton::before {
+      display: block;
+      position: absolute;
+      top: -50%;
+      left: -30%;
+      transform: rotate(30deg);
+      width: 70px;
+      height: 100px;
+      content: "";
+      background-image: linear-gradient(
+        to left,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 1) 50%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        right bottom,
+        color-stop(0%, rgba(255, 255, 255, 0)),
+        color-stop(50%, rgba(255, 255, 255, 1)),
+        color-stop(100%, rgba(255, 255, 255, 0))
+      );
+      animation: animation-startedButton 2s infinite linear;
+    }
+
+    @keyframes animation-startedButton {
+      17% {
+        left: 120%;
+      }
+      100% {
+        left: 120%;
+      }
+    }
+
+    .startedButton:hover {
+      background-color: #1579c0;
+    }
   }
 }

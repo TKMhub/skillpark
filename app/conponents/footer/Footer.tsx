@@ -9,15 +9,15 @@ const Footer = () => {
         <div className={styles.Footer__container__left}>
           <div className={styles.Footer__container__left__logo}></div>
           <div className={styles.Footer__container__left__text}>
-            <p>2023 Skillpark</p>
+            <p>2023-08-31 Skillpark</p>
           </div>
         </div>
-        <div className={styles.Footer__container__right}>
+        {/* <div className={styles.Footer__container__right}>
           <div className={styles.Footer__container__right__text}>
             <p>Privacy Policy</p>
             <p>Terms of Service</p>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

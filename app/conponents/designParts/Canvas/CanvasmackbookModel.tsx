@@ -8,9 +8,12 @@ import {
 } from "@react-three/drei";
 import styles from "./Canvas.module.scss";
 
-const CanvasmackbookModel = () => {
-  const macbookModel = useGLTF("/3d/model.gltf");
+const Model = () => {
+  const { scene } = useGLTF("/3d/model.gltf");
+  return <primitive object={scene} scale={[1.2, 1.2, 1.2]} />;
+};
 
+const CanvasmackbookModel = () => {
   return (
     <div className={styles.Canvas}>
       <Canvas camera={{ position: [0, 2, 5], fov: 70, near: 0.1, far: 2000 }}>
@@ -26,10 +29,7 @@ const CanvasmackbookModel = () => {
           </Text>
           <Float rotationIntensity={1.5}>
             <rectAreaLight />
-            <primitive
-              object={macbookModel.scene}
-              scale={[1.2, 1.2, 1.2]}
-            ></primitive>
+            <Model />
           </Float>
         </PresentationControls>
         <ContactShadows scale={7} blur={2.4} opacity={0.7} position-y={-2.0} />

@@ -31,7 +31,7 @@ const Header = () => {
             Contact
           </Link>
           <Link
-            href="/auth/login"
+            href="/open/auth/login"
             className={styles.Header_right_item_buttonSpace}
           >
             <Button
@@ -48,7 +48,7 @@ const Header = () => {
             </Button>
           </Link>
           <Link
-            href="/auth/signup"
+            href="/open/auth/signup"
             className={styles.Header_right_item_buttonSpace}
           >
             <Button

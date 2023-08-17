@@ -4,8 +4,8 @@ import { Box, Button, TextField, Typography } from "@mui/material";
 import styled from "@emotion/styled";
 import Link from "next/link";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { app } from "../../firebase";
-import { useRouter } from "next/router";
+import { app } from "../../../firebase";
+import { useRouter } from "next/navigation";
 
 /************
 CSS in JS
@@ -124,7 +124,7 @@ const Login = () => {
         </Typography>
         <br />
         <Typography variant="body2" align="center">
-          <Link href="/auth/password">パスワードをお忘れですか？</Link>
+          <Link href="/open/auth/password">パスワードをお忘れですか？</Link>
         </Typography>
       </LoginContainer>
     </>

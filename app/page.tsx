@@ -1,10 +1,12 @@
 "use client";
 import styles from "./Top.module.scss";
-import TextEffect from "./conponents/designParts/TextEffect";
 import { motion } from "framer-motion";
-import CanvasmackbookModel from "./conponents/designParts/Canvas/CanvasmackbookModel";
 import React, { useEffect, useState } from "react";
 import { Grid, Paper, styled } from "@mui/material";
+import Header from "./conponents/header/Header";
+import CanvasmackbookModel from "./conponents/designParts/Canvas/CanvasmackbookModel";
+import TextEffect from "./conponents/designParts/TextEffect";
+import Footer from "./conponents/footer/Footer";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: "#6bbaff",
@@ -79,6 +81,7 @@ export default function Home() {
 
   return (
     <>
+      <Header />
       {/* セクション -TOP */}
       <section className={styles.background} id="first">
         <motion.div
@@ -148,6 +151,7 @@ export default function Home() {
           </a>
         </section>
       </main>
+      <Footer />
     </>
   );
 }

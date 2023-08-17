@@ -1,40 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Grid, Paper, styled } from "@mui/material";
-
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: "#6bbaff",
-  backdropFilter: "blur(5px)",
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  margin: "30px",
-  textAlign: "center",
-  color: theme.palette.text.secondary,
-  // 以下は追加部分
-  position: "relative",
-  paddingBottom: "60%", // これで正方形になります
-  "& > div": {
-    position: "absolute",
-    width: "100%",
-    height: "100%",
-  },
-}));
-
-function FormRow() {
-  return (
-    <React.Fragment>
-      <Grid item xs={4}>
-        <Item>Item</Item>
-      </Grid>
-      <Grid item xs={4}>
-        <Item>Item</Item>
-      </Grid>
-      <Grid item xs={4}>
-        <Item>Item</Item>
-      </Grid>
-    </React.Fragment>
-  );
-}
 
 export default function Home() {
   // スクロール位置の状態を定義します.

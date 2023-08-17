@@ -63,9 +63,11 @@ const Login = () => {
   };
 
   const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
     console.log("ログイン処理");
-    // e.preventDefault();
+    console.log(app);
     const auth = getAuth(app);
+    console.log(auth);
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
@@ -80,23 +82,23 @@ const Login = () => {
       });
     console.log("終了");
   };
-  useEffect(() => {
-    console.log("ログイン処理");
-    const auth = getAuth(app);
-    signInWithEmailAndPassword(auth, "test@test.com", "testtest")
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        // ...
-        console.log(user);
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(error);
-      });
-    console.log("終了");
-  }, []);
+  // useEffect(() => {
+  //   console.log("ログイン処理");
+  //   const auth = getAuth(app);
+  //   signInWithEmailAndPassword(auth, "test@test.com", "testtest")
+  //     .then((userCredential) => {
+  //       // Signed in
+  //       const user = userCredential.user;
+  //       // ...
+  //       console.log(user);
+  //     })
+  //     .catch((error) => {
+  //       const errorCode = error.code;
+  //       const errorMessage = error.message;
+  //       console.log(error);
+  //     });
+  //   console.log("終了");
+  // }, []);
 
   return (
     <>

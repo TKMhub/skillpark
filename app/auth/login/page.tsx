@@ -5,11 +5,15 @@ import styled from "@emotion/styled";
 import Link from "next/link";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { app } from "../../firebase";
+import { useRouter } from "next/router";
 
+/************
+CSS in JS
+************/
 const LoginContainer = styled(Box)`
   display: flex;
   flex-direction: column;
-  background-color: #f5f5f5;
+  background-color: #edf6ff;
   align-items: center;
   justify-content: center;
   height: 100vh;
@@ -48,7 +52,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const emailRef = useRef<HTMLInputElement>(null);
-  // const router = useRouter();
+  const router = useRouter();
 
   useEffect(() => {
     emailRef.current?.focus();
@@ -72,8 +76,8 @@ const Login = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        // ...
         console.log(user);
+        router.push("/mainfunc");
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -82,23 +86,6 @@ const Login = () => {
       });
     console.log("終了");
   };
-  // useEffect(() => {
-  //   console.log("ログイン処理");
-  //   const auth = getAuth(app);
-  //   signInWithEmailAndPassword(auth, "test@test.com", "testtest")
-  //     .then((userCredential) => {
-  //       // Signed in
-  //       const user = userCredential.user;
-  //       // ...
-  //       console.log(user);
-  //     })
-  //     .catch((error) => {
-  //       const errorCode = error.code;
-  //       const errorMessage = error.message;
-  //       console.log(error);
-  //     });
-  //   console.log("終了");
-  // }, []);
 
   return (
     <>

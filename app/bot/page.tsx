@@ -13,6 +13,9 @@ interface Message {
   isBot: boolean;
 }
 
+/************
+Tailwind CSS
+************/
 const Box: FunctionComponent = () => {
   const [messages, setMessages] = useState<Array<Message>>([]);
   const [message, setMessage] = useState<string>("");
@@ -67,7 +70,7 @@ const Box: FunctionComponent = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center h-4/5">
+      <div className="flex flex-col items-center justify-center h-screen">
         <div className="max-w-lg w-full mt-16">
           <div
             style={{ height: "500px" }}

@@ -7,7 +7,7 @@ import Link from "next/link";
 const PasswordContainer = styled(Box)`
   display: flex;
   flex-direction: column;
-  background-color: #f5f5f5;
+  background-color: #edf6ff;
   align-items: center;
   justify-content: center;
   height: 100vh;
@@ -31,7 +31,7 @@ const FormBox = styled(Box)`
   margin-bottom: 2rem;
   backdrop-filter: blur(50px);
   box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.75);
-
+  border: 1px solid #1876d2;
   @media (max-width: 768px) {
     padding: 1rem;
   }
@@ -83,7 +83,6 @@ const Password = () => {
             fullWidth
             inputProps={{
               ref: emailRef,
-              style: { color: "#ffffff" },
             }}
           />
           <Button type="submit" variant="contained" color="primary" fullWidth>
@@ -92,11 +91,11 @@ const Password = () => {
         </form>
       </FormBox>
       <Typography variant="body2" align="center">
-        <Link href="/auth/signup">新規登録はこちら</Link>
+        <Link href="/open/auth/signup">新規登録はこちら</Link>
       </Typography>
       <br />
       <Typography variant="body2" align="center">
-        <Link href="/auth/login">ログインはこちら</Link>
+        <Link href="/open/auth/login">ログインはこちら</Link>
       </Typography>
     </PasswordContainer>
   );

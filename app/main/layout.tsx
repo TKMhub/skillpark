@@ -10,7 +10,6 @@ export default function mainfunc({
     <section>
       <Header />
       {children}
-      <Footer />
     </section>
   );
 }

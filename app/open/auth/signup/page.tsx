@@ -7,7 +7,7 @@ import Link from "next/link";
 const SignupContainer = styled(Box)`
   display: flex;
   flex-direction: column;
-  background-color: #f5f5f5;
+  background-color: #edf6ff;
   align-items: center;
   justify-content: center;
   height: 100vh;
@@ -32,7 +32,8 @@ const FormBox = styled(Box)`
   margin-bottom: 2rem;
   backdrop-filter: blur(50px);
   box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.75);
-
+  display: flex;
+  border: 1px solid #1876d2;
   @media (max-width: 768px) {
     padding: 1rem;
   }
@@ -95,7 +96,6 @@ const Signup = () => {
             fullWidth
             inputProps={{
               ref: emailRef,
-              style: { color: "#ffffff" },
             }}
           />
           <StyledTextField
@@ -105,9 +105,6 @@ const Signup = () => {
             onChange={handlePasswordChange}
             required
             fullWidth
-            inputProps={{
-              style: { color: "#ffffff" },
-            }}
           />
           <StyledTextField
             label="Confirm Password"
@@ -116,9 +113,6 @@ const Signup = () => {
             onChange={handleConfirmPasswordChange}
             required
             fullWidth
-            inputProps={{
-              style: { color: "#ffffff" },
-            }}
           />
           <Button type="submit" variant="contained" color="primary" fullWidth>
             Signup
@@ -126,7 +120,7 @@ const Signup = () => {
         </form>
       </FormBox>
       <Typography variant="body2">
-        <Link href="/auth/login">ログインはこちら</Link>
+        <Link href="/open/auth/login">ログインはこちら</Link>
       </Typography>
     </SignupContainer>
   );

@@ -1,4 +1,4 @@
-import "./globalcss/globals.css";
+import "../public/globalcss/globals.css";
 import { Inter } from "next/font/google";
 import Head from "next/head";
 

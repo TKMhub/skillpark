@@ -68,23 +68,19 @@ const Login = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("ログイン処理");
-    console.log(app);
+    console.log("login action");
     const auth = getAuth(app);
-    console.log(auth);
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        console.log(user);
-        router.push("/mainfunc");
+        console.log("login success");
+        router.push("/main");
       })
       .catch((error) => {
+        console.log("login failed");
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(error);
+        console.log(errorCode, errorMessage);
       });
-    console.log("終了");
   };
 
   return (

@@ -27,7 +27,7 @@ const Header = () => {
           <Link href="/" className={styles.Header_right_item_link}>
             Skills
           </Link>
-          <Link href="/" className={styles.Header_right_item_link}>
+          <Link href="/open/contact" className={styles.Header_right_item_link}>
             Contact
           </Link>
           <Link

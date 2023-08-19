@@ -16,7 +16,7 @@ interface Message {
 /************
 Tailwind CSS
 ************/
-const Box: FunctionComponent = () => {
+const Bot: FunctionComponent = () => {
   const [messages, setMessages] = useState<Array<Message>>([]);
   const [message, setMessage] = useState<string>("");
 
@@ -123,4 +123,4 @@ const Box: FunctionComponent = () => {
   );
 };
 
-export default Box;
+export default Bot;

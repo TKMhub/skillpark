@@ -25,31 +25,31 @@ const Box: FunctionComponent = () => {
 
     setMessages([...messages, { text: message, isBot: false }]);
 
-    const response = await axios.post(
-      "https://api.openai.com/v1/chat/completions",
-      {
-        model: "gpt-3.5-turbo",
-        messages: [
-          {
-            role: "system",
-            content: "You are a helpful assistant.",
-          },
-          {
-            role: "user",
-            content: message,
-          },
-        ],
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${process.env.NEXT_PUBLIC_OPENAPI_KEY}`,
-        },
-      }
-    );
+    // const response = await axios.post(
+    //   "https://api.openai.com/v1/chat/completions",
+    //   {
+    //     model: "gpt-3.5-turbo",
+    //     messages: [
+    //       {
+    //         role: "system",
+    //         content: "You are a helpful assistant.",
+    //       },
+    //       {
+    //         role: "user",
+    //         content: message,
+    //       },
+    //     ],
+    //   },
+    //   {
+    //     headers: {
+    //       Authorization: `Bearer ${process.env.NEXT_PUBLIC_OPENAPI_KEY}`,
+    //     },
+    //   }
+    // );
 
     setMessages([
       ...messages,
-      { text: response.data.choices[0].message.content, isBot: true },
+      // { text: response.data.choices[0].message.content, isBot: true },
     ]);
   };
 

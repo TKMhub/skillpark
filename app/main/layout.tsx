@@ -1,6 +1,7 @@
 "use client";
 import * as React from "react";
 import { styled, useTheme, Theme, CSSObject } from "@mui/material/styles";
+import styles from "./mainLayout.module.scss";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
@@ -182,7 +183,7 @@ export default function Main({ children }: { children: React.ReactNode }) {
       {/* TOPバー */}
       <TopAppBar position="fixed" sx={{ height: `${TopAppBarHeight}px` }}>
         <Toolbar sx={{ height: `${TopAppBarHeight}px` }}>
-          <h1>skillPark（ロゴとユーザー情報）</h1>
+          <h1 className={styles.h1}>skillPark</h1>
         </Toolbar>
       </TopAppBar>
       <LinearProgress />
@@ -250,7 +251,14 @@ export default function Main({ children }: { children: React.ReactNode }) {
         <Divider />
         <List>
           {subItems.map((item) => (
-            <ListItem key={item.text} disablePadding sx={{ display: "block" }}>
+            <ListItem
+              key={item.text}
+              disablePadding
+              sx={{
+                display: "block",
+                marginTop: "20px",
+              }}
+            >
               <ListItemButton
                 sx={{
                   minHeight: 48,

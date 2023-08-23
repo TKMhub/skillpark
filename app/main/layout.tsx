@@ -159,7 +159,7 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 const mainBackgroundColor = {
-  backgroundColor: "#edf6ff",
+  backgroundColor: "#f2f6fa",
   height: "100vh",
   width: "100%",
   display: "flex",

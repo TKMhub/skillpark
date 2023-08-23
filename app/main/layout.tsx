@@ -38,8 +38,8 @@ import RequestQuoteTwoToneIcon from "@mui/icons-material/RequestQuoteTwoTone";
 import NewspaperTwoToneIcon from "@mui/icons-material/NewspaperTwoTone";
 import MilitaryTechTwoToneIcon from "@mui/icons-material/MilitaryTechTwoTone";
 import TipsAndUpdatesTwoToneIcon from "@mui/icons-material/TipsAndUpdatesTwoTone";
-import LinearProgress from "@mui/material/LinearProgress";
 
+import LinearProgress from "@mui/material/LinearProgress";
 // 月 / 太陽
 import DarkModeTwoToneIcon from "@mui/icons-material/DarkModeTwoTone";
 import WbSunnyTwoToneIcon from "@mui/icons-material/WbSunnyTwoTone";
@@ -183,10 +183,13 @@ export default function Main({ children }: { children: React.ReactNode }) {
       {/* TOPバー */}
       <TopAppBar position="fixed" sx={{ height: `${TopAppBarHeight}px` }}>
         <Toolbar sx={{ height: `${TopAppBarHeight}px` }}>
-          <h1 className={styles.h1}>skillPark</h1>
+          <h1 className={styles.TopbarTitle}>skillPark</h1>
         </Toolbar>
+        {/* <LoadingIndicator /> */}
+        <div>
+          <LinearProgress />
+        </div>
       </TopAppBar>
-      <LinearProgress />
       <AppBar position="fixed" open={open}>
         <Toolbar>
           <IconButton
@@ -201,7 +204,11 @@ export default function Main({ children }: { children: React.ReactNode }) {
           >
             <MenuIcon />
           </IconButton>
-          <h6>機能タイトルバー</h6>
+          <h6>
+            機能タイトルバー
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            ↑画面遷移中のエフェクト（画面遷移を実装したら制御を加える）
+          </h6>
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>

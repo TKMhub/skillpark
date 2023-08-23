@@ -2,6 +2,8 @@ import { Inter } from "next/font/google";
 import Head from "next/head";
 import Header from "../conponents/header/Header";
 import styles from "../../public/globalcss/Global.module.scss";
+import LoadingIndicator from "../conponents/designParts/LoadingIndicator";
+import { LinearProgress } from "@mui/material";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,6 +16,9 @@ export default function Open({ children }: { children: React.ReactNode }) {
   return (
     <section>
       <Header />
+      <div>
+        <LinearProgress />
+      </div>
       {children}
     </section>
   );

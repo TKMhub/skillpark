@@ -182,7 +182,7 @@ export default function Main({ children }: { children: React.ReactNode }) {
       {/* TOPバー */}
       <TopAppBar position="fixed" sx={{ height: `${TopAppBarHeight}px` }}>
         <Toolbar sx={{ height: `${TopAppBarHeight}px` }}>
-          <h6>TOPバー（ロゴとユーザー情報）</h6>
+          <h1>skillPark（ロゴとユーザー情報）</h1>
         </Toolbar>
       </TopAppBar>
       <LinearProgress />

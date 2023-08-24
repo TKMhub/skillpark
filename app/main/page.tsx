@@ -1,46 +1,36 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { db } from "../firebase";
+import { collection, doc, getDocs, onSnapshot } from "firebase/firestore";
 
-export default function Home() {
-  // スクロール位置の状態を定義します.
-  const [scrollY, setScrollY] = useState(0);
+export default function Main() {
+  const [posts, setPosts] = useState<{ [x: string]: any }[]>([]);
 
-  // スクロールイベントを監視します.
   useEffect(() => {
-    // スクロール位置を取得する関数.
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
+    // データベースからデータを取得する処理
+    const postData = collection(db, "posts");
 
-    // スクロールイベントにリスナーを追加します.
-    window.addEventListener("scroll", handleScroll);
+    // 値を取得
+    getDocs(postData).then((snapshot) => {
+      // console.log(snapshot.docs.map((doc) => ({ ...doc.data() })));
+      setPosts(snapshot.docs.map((doc) => ({ ...doc.data() })));
+    });
 
-    // クリーンアップ関数です. コンポーネントがアンマウントされた時にリスナーを削除します.
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    //リアルタイムで値を取得
+    onSnapshot(postData, (post) => {
+      setPosts(post.docs.map((doc) => ({ ...doc.data() })));
+    });
   }, []);
-  //初期表示でアニメーションを実行
-  const variantsTop = {
-    hidden: { opacity: 0, x: "-100vw" },
-    visible: { opacity: 1, x: "0" },
-  };
-
-  // スクロール位置に基づいてアニメーションの状態を設定します.
-  const variants2 = {
-    hidden: { opacity: 0 },
-    visible: { opacity: scrollY > 100 ? 1 : 0 }, // 100px以上スクロールしたら表示.
-  };
-
-  // スクロール位置に基づいてアニメーションの状態を設定します.
-  const variants3 = {
-    hidden: { opacity: 0 },
-    visible: { opacity: scrollY > 1000 ? 1 : 0 }, // 100px以上スクロールしたら表示.
-  };
 
   return (
     <div>
-      <a href="#first">TOP</a>
+      <h1>データベースからの取得内容</h1>
+      {posts.map((post) => (
+        <div key={post.title}>
+          <h2>{post.title}</h2>
+          <p>{post.text}</p>
+        </div>
+      ))}
     </div>
   );
 }

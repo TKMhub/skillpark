@@ -50,6 +50,7 @@ import SyncTwoToneIcon from "@mui/icons-material/SyncTwoTone";
 // 目
 import VisibilityTwoToneIcon from "@mui/icons-material/VisibilityTwoTone";
 import VisibilityOffTwoToneIcon from "@mui/icons-material/VisibilityOffTwoTone";
+import { Typography } from "@mui/material";
 
 const drawerWidth = 240;
 const TopAppBarHeight = 64;
@@ -101,6 +102,10 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   justifyContent: "flex-end",
   padding: theme.spacing(0, 1),
   ...theme.mixins.toolbar,
+}));
+
+const MainHeader = styled("div")(({ theme }) => ({
+  marginTop: TopAppBarHeight,
 }));
 
 interface AppBarProps extends MuiAppBarProps {
@@ -185,7 +190,6 @@ export default function Main({ children }: { children: React.ReactNode }) {
         <Toolbar sx={{ height: `${TopAppBarHeight}px` }}>
           <h1 className={styles.TopbarTitle}>skillPark</h1>
         </Toolbar>
-        {/* <LoadingIndicator /> */}
         <div>
           <LinearProgress />
         </div>
@@ -293,6 +297,7 @@ export default function Main({ children }: { children: React.ReactNode }) {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
+        <MainHeader />
         {children}
       </Box>
     </section>

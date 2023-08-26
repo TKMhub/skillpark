@@ -24,13 +24,32 @@ export default function Main() {
 
   return (
     <div>
-      <h1>データベースからの取得内容</h1>
-      {posts.map((post) => (
-        <div key={post.title}>
-          <h2>{post.title}</h2>
-          <p>{post.text}</p>
-        </div>
-      ))}
+      <section>
+        <h1>データベースからの取得テスト</h1>
+        <br />
+        {posts.map((post) => (
+          <div key={post.title}>
+            <br />
+            <h2>{post.title}</h2>
+            <br />
+            <p>{post.text}</p>
+          </div>
+        ))}
+      </section>
+      <br />
+      <br />
+      <br />
+      <section>
+        <h1>ファイルサーバーからのJPEGファイル取得テスト</h1>
+        <br />
+        <h1>↓この後やること</h1>
+        <h1>①Recoilによる状態管理</h1>
+        <h1>②ファイヤーストア連携</h1>
+        <br />
+        {posts.map((post) => (
+          <></>
+        ))}
+      </section>
     </div>
   );
 }

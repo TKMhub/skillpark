@@ -258,6 +258,8 @@ export default function Main({ children }: { children: React.ReactNode }) {
               height: "30rem",
               overflowY: "auto",
               color: "white",
+              fontFamily: "Roboto, sans-serif",
+              fontWeight: 10000,
             }}
           >
             <Divider />

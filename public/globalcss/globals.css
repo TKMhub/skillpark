@@ -8,5 +8,10 @@ body {
 }
 
 .css-12i7wg6-MuiPaper-root-MuiDrawer-paper {
-  background-color: transparent !important;
+  background-color: transparent;
+}
+
+.css-10hburv-MuiTypography-root {
+  font-weight: 700;
+  color: #fff;
 }

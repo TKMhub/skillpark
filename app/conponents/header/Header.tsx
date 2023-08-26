@@ -3,6 +3,8 @@ import React from "react";
 import Link from "next/link";
 import styles from "./Header.module.scss";
 import { Button, LinearProgress } from "@mui/material";
+import Image from "next/image";
+import skillParkLogo from "../../../public/image/skillPark.svg";
 import LoadingIndicator from "../designParts/LoadingIndicator";
 
 const Header = () => {
@@ -10,13 +12,15 @@ const Header = () => {
     <>
       <div className={styles.Header}>
         <Link href="/">
-          {/* ロゴを挿入 ∏*/}
-          {/* <Image
-          src={TopLogo}
-          style={{ width: "100px" }}
-          alt="Logo"
-          priority={true}
-        /> */}
+          <div className={styles.logo}>
+            <Image
+              src={skillParkLogo}
+              style={{ width: "50px", marginRight: "10px" }}
+              alt="Logo"
+              priority={true}
+            />
+            <h1>skillPark</h1>
+          </div>
         </Link>
         <div className={styles.Header_right}>
           <div className={styles.Header_right_item}>
@@ -71,9 +75,6 @@ const Header = () => {
             </Link>
           </div>
         </div>
-      </div>
-      <div className={styles.LinearProgress}>
-        <LinearProgress />
       </div>
     </>
   );

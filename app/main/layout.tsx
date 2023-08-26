@@ -117,8 +117,8 @@ const TopAppBar = styled(MuiAppBar, {
 })(({ theme }) => ({
   zIndex: theme.zIndex.drawer + 2,
   height: TopAppBarHeight,
-  backgroundImage: "linear-gradient(30deg, #2b05ff84, #2ab1f07f)",
-  color: "white",
+  backgroundColor: "white",
+  color: "#333333",
 }));
 
 const AppBar = styled(MuiAppBar, {
@@ -215,24 +215,70 @@ export default function Main({ children }: { children: React.ReactNode }) {
           </h6>
         </Toolbar>
       </AppBar>
-      <Drawer variant="permanent" open={open}>
-        <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "rtl" ? (
-              <ChevronRightIcon />
-            ) : (
-              <ChevronLeftIcon />
-            )}
-          </IconButton>
-        </DrawerHeader>
-        <Divider />
-        <div style={{ height: "30rem", overflowY: "auto" }}>
+      <div
+        style={{
+          background: "linear-gradient(60deg, #2B00AD, #8FD4FF)",
+        }}
+      >
+        <Drawer variant="permanent" open={open} className={styles.drawerPaper}>
+          <DrawerHeader>
+            <IconButton onClick={handleDrawerClose}>
+              {theme.direction === "rtl" ? (
+                <ChevronRightIcon />
+              ) : (
+                <ChevronLeftIcon />
+              )}
+            </IconButton>
+          </DrawerHeader>
+          <div
+            style={{
+              height: "30rem",
+              overflowY: "auto",
+            }}
+          >
+            <Divider />
+            <List>
+              {mainItems.map((item) => (
+                <ListItem
+                  key={item.text}
+                  disablePadding
+                  sx={{ display: "block" }}
+                >
+                  <ListItemButton
+                    sx={{
+                      minHeight: 48,
+                      justifyContent: open ? "initial" : "center",
+                      px: 2.5,
+                    }}
+                  >
+                    <ListItemIcon
+                      sx={{
+                        minWidth: 0,
+                        mr: open ? 3 : "auto",
+                        justifyContent: "center",
+                      }}
+                    >
+                      {item.icon}
+                    </ListItemIcon>
+                    <ListItemText
+                      primary={item.text}
+                      sx={{ opacity: open ? 1 : 0 }}
+                    />
+                  </ListItemButton>
+                </ListItem>
+              ))}
+            </List>
+          </div>
+          <Divider />
           <List>
-            {mainItems.map((item) => (
+            {subItems.map((item) => (
               <ListItem
                 key={item.text}
                 disablePadding
-                sx={{ display: "block" }}
+                sx={{
+                  display: "block",
+                  marginTop: "20px",
+                }}
               >
                 <ListItemButton
                   sx={{
@@ -258,43 +304,8 @@ export default function Main({ children }: { children: React.ReactNode }) {
               </ListItem>
             ))}
           </List>
-        </div>
-        <Divider />
-        <List>
-          {subItems.map((item) => (
-            <ListItem
-              key={item.text}
-              disablePadding
-              sx={{
-                display: "block",
-                marginTop: "20px",
-              }}
-            >
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
-                    justifyContent: "center",
-                  }}
-                >
-                  {item.icon}
-                </ListItemIcon>
-                <ListItemText
-                  primary={item.text}
-                  sx={{ opacity: open ? 1 : 0 }}
-                />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-      </Drawer>
+        </Drawer>
+      </div>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
         <MainHeader />

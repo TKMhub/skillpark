@@ -6,3 +6,7 @@ body {
   padding: 0;
   margin: 0;
 }
+
+.css-12i7wg6-MuiPaper-root-MuiDrawer-paper {
+  background-color: transparent !important;
+}

@@ -1,5 +1,7 @@
 "use client";
 import * as React from "react";
+import Image from "next/image";
+import skillParkLogo from "../../public/image/skillPark.svg";
 import { styled, useTheme, Theme, CSSObject } from "@mui/material/styles";
 import styles from "./mainLayout.module.scss";
 import Box from "@mui/material/Box";
@@ -56,21 +58,36 @@ const drawerWidth = 240;
 const TopAppBarHeight = 64;
 
 const mainItems = [
-  { text: "スキル", icon: <CodeTwoToneIcon /> },
-  { text: "投稿", icon: <TocTwoToneIcon /> },
-  { text: "記事", icon: <NewspaperTwoToneIcon /> },
-  { text: "学習", icon: <SchoolTwoToneIcon /> },
-  { text: "共有", icon: <ShareTwoToneIcon /> },
-  { text: "自動化", icon: <PrecisionManufacturingTwoToneIcon /> },
-  { text: "アイディア", icon: <TipsAndUpdatesTwoToneIcon /> },
-  { text: "教材", icon: <AutoStoriesTwoToneIcon /> },
-  { text: "資格", icon: <MilitaryTechTwoToneIcon /> },
-  { text: "申請", icon: <RequestQuoteTwoToneIcon /> },
+  { text: "スキル", icon: <CodeTwoToneIcon style={{ color: "white" }} /> },
+  { text: "投稿", icon: <TocTwoToneIcon style={{ color: "white" }} /> },
+  { text: "記事", icon: <NewspaperTwoToneIcon style={{ color: "white" }} /> },
+  { text: "学習", icon: <SchoolTwoToneIcon style={{ color: "white" }} /> },
+  { text: "共有", icon: <ShareTwoToneIcon style={{ color: "white" }} /> },
+  {
+    text: "自動化",
+    icon: <PrecisionManufacturingTwoToneIcon style={{ color: "white" }} />,
+  },
+  {
+    text: "アイディア",
+    icon: <TipsAndUpdatesTwoToneIcon style={{ color: "white" }} />,
+  },
+  { text: "教材", icon: <AutoStoriesTwoToneIcon style={{ color: "white" }} /> },
+  {
+    text: "資格",
+    icon: <MilitaryTechTwoToneIcon style={{ color: "white" }} />,
+  },
+  {
+    text: "申請",
+    icon: <RequestQuoteTwoToneIcon style={{ color: "white" }} />,
+  },
 ];
 const subItems = [
-  { text: "Profile ", icon: <AccountBoxTwoToneIcon /> },
-  { text: "Contact", icon: <SendTwoToneIcon /> },
-  { text: "Setting", icon: <SettingsTwoToneIcon /> },
+  {
+    text: "Profile ",
+    icon: <AccountBoxTwoToneIcon style={{ color: "white" }} />,
+  },
+  { text: "Contact", icon: <SendTwoToneIcon style={{ color: "white" }} /> },
+  { text: "Setting", icon: <SettingsTwoToneIcon style={{ color: "white" }} /> },
 ];
 
 const openedMixin = (theme: Theme): CSSObject => ({
@@ -188,6 +205,12 @@ export default function Main({ children }: { children: React.ReactNode }) {
       {/* TOPバー */}
       <TopAppBar position="fixed" sx={{ height: `${TopAppBarHeight}px` }}>
         <Toolbar sx={{ height: `${TopAppBarHeight}px` }}>
+          <Image
+            src={skillParkLogo}
+            alt="skillpark_logo"
+            width={40}
+            height={40}
+          />
           <h1 className={styles.TopbarTitle}>skillPark</h1>
         </Toolbar>
         <div>
@@ -217,7 +240,7 @@ export default function Main({ children }: { children: React.ReactNode }) {
       </AppBar>
       <div
         style={{
-          background: "linear-gradient(60deg, #2B00AD, #8FD4FF)",
+          background: "linear-gradient(45deg, #003CFF, #8FD4FF)",
         }}
       >
         <Drawer variant="permanent" open={open} className={styles.drawerPaper}>
@@ -234,6 +257,7 @@ export default function Main({ children }: { children: React.ReactNode }) {
             style={{
               height: "30rem",
               overflowY: "auto",
+              color: "white",
             }}
           >
             <Divider />

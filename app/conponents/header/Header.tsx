@@ -5,7 +5,6 @@ import styles from "./Header.module.scss";
 import { Button, LinearProgress } from "@mui/material";
 import Image from "next/image";
 import skillParkLogo from "../../../public/image/skillPark.svg";
-import LoadingIndicator from "../designParts/LoadingIndicator";
 
 const Header = () => {
   return (

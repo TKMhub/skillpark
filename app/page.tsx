@@ -1,4 +1,5 @@
 "use client";
+import { RecoilRoot } from "recoil";
 import styles from "./Top.module.scss";
 import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
@@ -7,6 +8,8 @@ import Header from "./conponents/header/Header";
 import CanvasmackbookModel from "./conponents/designParts/Canvas/CanvasmackbookModel";
 import TextEffect from "./conponents/designParts/TextEffect";
 import Footer from "./conponents/footer/Footer";
+import skillParkLogo from "../public/image/skillPark.svg";
+import Image from "next/image";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: "#6bbaff",
@@ -18,7 +21,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
   // 以下は追加部分
   position: "relative",
-  paddingBottom: "60%", // これで正方形になります
+  paddingBottom: "60%",
   "& > div": {
     position: "absolute",
     width: "100%",
@@ -81,77 +84,94 @@ export default function Home() {
 
   return (
     <>
-      <Header />
-      {/* セクション -TOP */}
-      <section className={styles.background} id="first">
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={variantsTop}
-          transition={{ type: "spring", stiffness: 7, damping: 6 }}
-        >
-          <div className="inline">
-            <TextEffect
-              title="skillPark"
-              id="title"
-              className={styles.titleCenter}
-            />
-            <CanvasmackbookModel />
-          </div>
-        </motion.div>
-        <a className={styles.Scroll} href="#second">
-          Scroll
-        </a>
-      </section>
-
-      <main className={styles.mainColor}>
-        {/* セクション -2- */}
-        <section className={styles.contentsWrapper} id="second">
+      <RecoilRoot>
+        <Header />
+        {/* セクション -TOP */}
+        <section className={styles.background} id="first">
           <motion.div
             initial="hidden"
             animate="visible"
-            variants={variants2}
+            variants={variantsTop}
             transition={{ type: "spring", stiffness: 7, damping: 6 }}
           >
-            <TextEffect title="Menu" className={styles.titleDetail} id="two" />
-            <Grid container spacing={1}>
-              <Grid container item spacing={3}>
-                <FormRow />
-              </Grid>
-              <Grid container item spacing={3}>
-                <FormRow />
-              </Grid>
-            </Grid>
+            <div className="inline">
+              <TextEffect
+                title="skillPark"
+                id="title"
+                className={styles.titleCenter}
+              />
+              <CanvasmackbookModel />
+            </div>
           </motion.div>
-          <a className={styles.Scroll} href="#third">
+          <a className={styles.Scroll} href="#second">
             Scroll
           </a>
         </section>
 
-        {/* セクション -3- */}
-        <section className={styles.contentsWrapper} id="third">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={variants3}
-            transition={{ type: "spring", stiffness: 7, damping: 6 }}
-          >
-            <TextEffect
-              title="Let's start now."
-              className={styles.titleDetail}
-              id="three"
-            />
-            <p className={styles.titleContents}>
-              始めるには次のボタンを押してください。
-            </p>
-            <button className={styles.startedButton}>Get Started！</button>
-          </motion.div>
-          <a className={styles.ScrollEnd} href="#first">
-            TOP
-          </a>
-        </section>
-      </main>
-      <Footer />
+        <main className={styles.mainColor}>
+          {/* セクション -2- */}
+          <section className={styles.contentsWrapper} id="second">
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={variants2}
+              transition={{ type: "spring", stiffness: 7, damping: 6 }}
+            >
+              <TextEffect
+                title="Menu"
+                className={styles.titleDetail}
+                id="two"
+              />
+              <Grid container spacing={1}>
+                <Grid container item spacing={3}>
+                  <FormRow />
+                </Grid>
+                <Grid container item spacing={3}>
+                  <FormRow />
+                </Grid>
+              </Grid>
+            </motion.div>
+            <a className={styles.Scroll} href="#third">
+              Scroll
+            </a>
+          </section>
+
+          {/* セクション -3- */}
+          <section className={styles.contentsWrapper} id="third">
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={variants3}
+              transition={{ type: "spring", stiffness: 7, damping: 6 }}
+            >
+              <TextEffect
+                title="Let's start now."
+                className={styles.titleDetail}
+                id="three"
+              />
+              <section className={styles.titleContents}>
+                <p>skillParkを使い始めるには次のボタンを押してください。</p>
+                <p>皆んなで楽しく、スキルを習得しましょう！ \(^_^)/ </p>
+              </section>
+              <Image
+                src={skillParkLogo}
+                alt="skillParkLogo"
+                style={{
+                  position: "absolute",
+                  left: "40%",
+                  width: "55rem",
+                  opacity: "0.5",
+                }}
+              />
+              <button className={styles.startedButton}>Get Started！</button>
+            </motion.div>
+            <a className={styles.ScrollEnd} href="#first">
+              TOP
+            </a>
+          </section>
+        </main>
+        <Footer />
+      </RecoilRoot>
     </>
   );
 }

@@ -22,5 +22,5 @@ body {
 .css-yb0lig {
   color: #fff;
   font-family: Roboto sans-serif;
-  font-weight: 1000;
+  font-weight: bold !important;
 }

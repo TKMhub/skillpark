@@ -17,18 +17,10 @@ body {
 .css-10hburv-MuiTypography-root {
   font-weight: 700;
   color: #fff;
-  /* height: "30rem",
-              overflowY: "auto",
-              color: "white",
-              fontFamily: "Roboto, sans-serif",
-              fontWeight: 10000, */
 }
 
 .css-yb0lig {
   color: #fff;
   font-family: Roboto sans-serif;
-}
-
-.css-9zxti7 .MuiDrawer-paper {
   font-weight: 1000;
 }

@@ -54,6 +54,10 @@ import VisibilityTwoToneIcon from "@mui/icons-material/VisibilityTwoTone";
 import VisibilityOffTwoToneIcon from "@mui/icons-material/VisibilityOffTwoTone";
 import { Typography } from "@mui/material";
 
+import useScrollTrigger from "@mui/material/useScrollTrigger";
+import Container from "@mui/material/Container";
+import Slide from "@mui/material/Slide";
+
 const drawerWidth = 240;
 const TopAppBarHeight = 64;
 
@@ -187,6 +191,24 @@ const mainBackgroundColor = {
   display: "flex",
 };
 
+function HideOnScroll({
+  children,
+  window,
+}: {
+  children: React.ReactElement;
+  window?: () => Window;
+}) {
+  const trigger = useScrollTrigger({
+    target: window ? window() : undefined,
+  });
+
+  return (
+    <Slide appear={false} direction="down" in={!trigger}>
+      {children}
+    </Slide>
+  );
+}
+
 export default function Main({ children }: { children: React.ReactNode }) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
@@ -217,42 +239,46 @@ export default function Main({ children }: { children: React.ReactNode }) {
           <LinearProgress />
         </div>
       </TopAppBar>
-      <AppBar position="fixed" open={open}>
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            sx={{
-              marginRight: 5,
-              ...(open && { display: "none" }),
-            }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <h6>
-            機能タイトルバー
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            ↑画面遷移中のエフェクト（画面遷移を実装したら制御を加える）
-          </h6>
-        </Toolbar>
-      </AppBar>
+      <HideOnScroll>
+        <AppBar position="fixed" open={open}>
+          <Toolbar>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              edge="start"
+              sx={{
+                marginRight: 5,
+                ...(open && { display: "none" }),
+              }}
+            >
+              <MenuIcon />
+            </IconButton>
+            <h6>
+              機能タイトルバー
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              ↑画面遷移中のエフェクト（画面遷移を実装したら制御を加える）
+            </h6>
+          </Toolbar>
+        </AppBar>
+      </HideOnScroll>
       <div
         style={{
           background: "linear-gradient(45deg, #003CFF, #8FD4FF)",
         }}
       >
         <Drawer variant="permanent" open={open} className={styles.drawerPaper}>
-          <DrawerHeader>
-            <IconButton onClick={handleDrawerClose}>
-              {theme.direction === "rtl" ? (
-                <ChevronRightIcon />
-              ) : (
-                <ChevronLeftIcon />
-              )}
-            </IconButton>
-          </DrawerHeader>
+          <HideOnScroll>
+            <DrawerHeader>
+              <IconButton onClick={handleDrawerClose}>
+                {theme.direction === "rtl" ? (
+                  <ChevronRightIcon />
+                ) : (
+                  <ChevronLeftIcon />
+                )}
+              </IconButton>
+            </DrawerHeader>
+          </HideOnScroll>
           <div
             style={{
               height: "30rem",

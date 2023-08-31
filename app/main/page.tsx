@@ -50,6 +50,72 @@ export default function Main() {
           <></>
         ))}
       </section>
+      <section>
+        <h1>ファイルサーバーからのJPEGファイル取得テスト</h1>
+        <h1>①ファイヤーストア連携</h1>
+        <br />
+        <h1>グローバル状態管理</h1>
+        <h1>②Recoilによる状態管理</h1>
+        <br />
+        {posts.map((post) => (
+          <></>
+        ))}
+      </section>
+      <section>
+        <h1>ファイルサーバーからのJPEGファイル取得テスト</h1>
+        <h1>①ファイヤーストア連携</h1>
+        <br />
+        <h1>グローバル状態管理</h1>
+        <h1>②Recoilによる状態管理</h1>
+        <br />
+        {posts.map((post) => (
+          <></>
+        ))}
+      </section>
+      <section>
+        <h1>ファイルサーバーからのJPEGファイル取得テスト</h1>
+        <h1>①ファイヤーストア連携</h1>
+        <br />
+        <h1>グローバル状態管理</h1>
+        <h1>②Recoilによる状態管理</h1>
+        <br />
+        {posts.map((post) => (
+          <></>
+        ))}
+      </section>
+      <section>
+        <h1>ファイルサーバーからのJPEGファイル取得テスト</h1>
+        <h1>①ファイヤーストア連携</h1>
+        <br />
+        <h1>グローバル状態管理</h1>
+        <h1>②Recoilによる状態管理</h1>
+        <br />
+        {posts.map((post) => (
+          <></>
+        ))}
+      </section>
+      <section>
+        <h1>ファイルサーバーからのJPEGファイル取得テスト</h1>
+        <h1>①ファイヤーストア連携</h1>
+        <br />
+        <h1>グローバル状態管理</h1>
+        <h1>②Recoilによる状態管理</h1>
+        <br />
+        {posts.map((post) => (
+          <></>
+        ))}
+      </section>
+      <section>
+        <h1>ファイルサーバーからのJPEGファイル取得テスト</h1>
+        <h1>①ファイヤーストア連携</h1>
+        <br />
+        <h1>グローバル状態管理</h1>
+        <h1>②Recoilによる状態管理</h1>
+        <br />
+        {posts.map((post) => (
+          <></>
+        ))}
+      </section>
     </div>
   );
 }

@@ -25,7 +25,10 @@ body {
 }
 
 .css-yb0lig {
-  font-weight: 1000;
   color: #fff;
   font-family: Roboto sans-serif;
+}
+
+.css-9zxti7 .MuiDrawer-paper {
+  font-weight: 1000;
 }

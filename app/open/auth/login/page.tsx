@@ -6,6 +6,8 @@ import Link from "next/link";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { app } from "../../../firebase";
 import { useRouter } from "next/navigation";
+// import Image from "next/image";
+// import skillParkLogo from "../../../../public/image/skillPark.svg";
 
 /************
 CSS in JS
@@ -87,6 +89,18 @@ const Login = () => {
     <>
       <LoginContainer>
         <FormBox>
+          {/* <Image
+            src={skillParkLogo}
+            alt="skillpark_logo"
+            width={80}
+            height={80}
+            style={{
+              margin: "10px",
+              alignItems: "center",
+              justifyContent: "center",
+              textAlign: "center",
+            }}
+          /> */}
           <Typography variant="subtitle1" align="center" gutterBottom>
             ユーザーログインをしてください。
           </Typography>

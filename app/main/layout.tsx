@@ -7,7 +7,6 @@ import styles from "./mainLayout.module.scss";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
-import { css } from "@mui/system";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -39,7 +38,7 @@ import PrecisionManufacturingTwoToneIcon from "@mui/icons-material/PrecisionManu
 import RequestQuoteTwoToneIcon from "@mui/icons-material/RequestQuoteTwoTone";
 import NewspaperTwoToneIcon from "@mui/icons-material/NewspaperTwoTone";
 import MilitaryTechTwoToneIcon from "@mui/icons-material/MilitaryTechTwoTone";
-import TipsAndUpdatesTwoToneIcon from "@mui/icons-material/TipsAndUpdatesTwoTone";
+// import TipsAndUpdatesTwoToneIcon from "@mui/icons-material/TipsAndUpd/woTone";
 
 import LinearProgress from "@mui/material/LinearProgress";
 // 月 / 太陽
@@ -57,23 +56,45 @@ import { Typography } from "@mui/material";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import Container from "@mui/material/Container";
 import Slide from "@mui/material/Slide";
+import Link from "next/link";
 
 const drawerWidth = 240;
 const TopAppBarHeight = 64;
 
 const mainItems = [
-  { text: "スキル", icon: <CodeTwoToneIcon style={{ color: "white" }} /> },
-  { text: "投稿", icon: <TocTwoToneIcon style={{ color: "white" }} /> },
-  { text: "記事", icon: <NewspaperTwoToneIcon style={{ color: "white" }} /> },
-  { text: "学習", icon: <SchoolTwoToneIcon style={{ color: "white" }} /> },
-  { text: "共有", icon: <ShareTwoToneIcon style={{ color: "white" }} /> },
+  {
+    text: "スキル",
+    icon: <CodeTwoToneIcon style={{ color: "white" }} />,
+    path: "/main/gamensenni",
+  },
+  {
+    text: "投稿",
+    icon: <TocTwoToneIcon style={{ color: "white" }} />,
+    path: "/main",
+  },
+  {
+    text: "記事",
+    icon: <NewspaperTwoToneIcon style={{ color: "white" }} />,
+    path: "/",
+  },
+  {
+    text: "学習",
+    icon: <SchoolTwoToneIcon style={{ color: "white" }} />,
+    path: "/",
+  },
+  {
+    text: "共有",
+    icon: <ShareTwoToneIcon style={{ color: "white" }} />,
+    path: "/",
+  },
   {
     text: "自動化",
     icon: <PrecisionManufacturingTwoToneIcon style={{ color: "white" }} />,
+    path: "/",
   },
   {
     text: "アイディア",
-    icon: <TipsAndUpdatesTwoToneIcon style={{ color: "white" }} />,
+    icon: <PrecisionManufacturingTwoToneIcon style={{ color: "white" }} />,
   },
   { text: "教材", icon: <AutoStoriesTwoToneIcon style={{ color: "white" }} /> },
   {
@@ -212,6 +233,7 @@ function HideOnScroll({
 export default function Main({ children }: { children: React.ReactNode }) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
+  const [loading, setLoading] = React.useState(false);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -221,6 +243,13 @@ export default function Main({ children }: { children: React.ReactNode }) {
     setOpen(false);
   };
 
+  const handleLoadingOpen = () => {
+    setOpen(true);
+    setLoading(true); // サイドメニューを開く時にローディングを開始
+    setTimeout(() => {
+      setLoading(false); // 1.5秒後にローディングを終了
+    }, 1850);
+  };
   return (
     <section style={mainBackgroundColor}>
       <CssBaseline />
@@ -235,9 +264,11 @@ export default function Main({ children }: { children: React.ReactNode }) {
           />
           <h1 className={styles.TopbarTitle}>skillPark</h1>
         </Toolbar>
-        <div>
-          <LinearProgress />
-        </div>
+        {loading && ( // loadingの状態がtrueの時にLinearProgressコンポーネントを表示
+          <div>
+            <LinearProgress />
+          </div>
+        )}
       </TopAppBar>
       <HideOnScroll>
         <AppBar position="fixed" open={open}>
@@ -291,33 +322,40 @@ export default function Main({ children }: { children: React.ReactNode }) {
             <Divider />
             <List>
               {mainItems.map((item) => (
-                <ListItem
+                <Link
+                  href={item.path ?? "/default-path"}
+                  passHref
                   key={item.text}
-                  disablePadding
-                  sx={{ display: "block" }}
+                  onClick={handleLoadingOpen}
                 >
-                  <ListItemButton
-                    sx={{
-                      minHeight: 48,
-                      justifyContent: open ? "initial" : "center",
-                      px: 2.5,
-                    }}
+                  <ListItem
+                    key={item.text}
+                    disablePadding
+                    sx={{ display: "block" }}
                   >
-                    <ListItemIcon
+                    <ListItemButton
                       sx={{
-                        minWidth: 0,
-                        mr: open ? 3 : "auto",
-                        justifyContent: "center",
+                        minHeight: 48,
+                        justifyContent: open ? "initial" : "center",
+                        px: 2.5,
                       }}
                     >
-                      {item.icon}
-                    </ListItemIcon>
-                    <ListItemText
-                      primary={item.text}
-                      sx={{ opacity: open ? 1 : 0 }}
-                    />
-                  </ListItemButton>
-                </ListItem>
+                      <ListItemIcon
+                        sx={{
+                          minWidth: 0,
+                          mr: open ? 3 : "auto",
+                          justifyContent: "center",
+                        }}
+                      >
+                        {item.icon}
+                      </ListItemIcon>
+                      <ListItemText
+                        primary={item.text}
+                        sx={{ opacity: open ? 1 : 0 }}
+                      />
+                    </ListItemButton>
+                  </ListItem>
+                </Link>
               ))}
             </List>
           </div>

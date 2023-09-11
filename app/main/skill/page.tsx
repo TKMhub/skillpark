@@ -6,7 +6,7 @@ export default function gamensenni() {
   return (
     <div>
       <section>
-        <h1>画面遷移テスト</h1>
+        <h1>スキル ページ</h1>
       </section>
     </div>
   );

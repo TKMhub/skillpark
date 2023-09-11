@@ -65,54 +65,66 @@ const mainItems = [
   {
     text: "スキル",
     icon: <CodeTwoToneIcon style={{ color: "white" }} />,
-    path: "/main/gamensenni",
+    path: "/main/skill",
   },
   {
     text: "投稿",
     icon: <TocTwoToneIcon style={{ color: "white" }} />,
-    path: "/main",
+    path: "/main/post",
   },
   {
     text: "記事",
     icon: <NewspaperTwoToneIcon style={{ color: "white" }} />,
-    path: "/",
+    path: "/main/article",
   },
   {
     text: "学習",
     icon: <SchoolTwoToneIcon style={{ color: "white" }} />,
-    path: "/",
+    path: "/main/learn",
   },
   {
     text: "共有",
     icon: <ShareTwoToneIcon style={{ color: "white" }} />,
-    path: "/",
+    path: "/main/share",
   },
   {
     text: "自動化",
     icon: <PrecisionManufacturingTwoToneIcon style={{ color: "white" }} />,
-    path: "/",
+    path: "/main/automation",
   },
   {
     text: "アイディア",
     icon: <PrecisionManufacturingTwoToneIcon style={{ color: "white" }} />,
+    path: "/main/idea",
   },
-  { text: "教材", icon: <AutoStoriesTwoToneIcon style={{ color: "white" }} /> },
+  {
+    text: "教材",
+    icon: <AutoStoriesTwoToneIcon style={{ color: "white" }} />,
+    path: "/main/books",
+  },
+
   {
     text: "資格",
     icon: <MilitaryTechTwoToneIcon style={{ color: "white" }} />,
-  },
-  {
-    text: "申請",
-    icon: <RequestQuoteTwoToneIcon style={{ color: "white" }} />,
+    path: "/main/qualification",
   },
 ];
 const subItems = [
   {
     text: "Profile ",
     icon: <AccountBoxTwoToneIcon style={{ color: "white" }} />,
+    path: "/main/profile",
   },
-  { text: "Contact", icon: <SendTwoToneIcon style={{ color: "white" }} /> },
-  { text: "Setting", icon: <SettingsTwoToneIcon style={{ color: "white" }} /> },
+  {
+    text: "Contact",
+    icon: <SendTwoToneIcon style={{ color: "white" }} />,
+    path: "/main/contact",
+  },
+  {
+    text: "Settings",
+    icon: <SettingsTwoToneIcon style={{ color: "white" }} />,
+    path: "/main/settings",
+  },
 ];
 
 const openedMixin = (theme: Theme): CSSObject => ({
@@ -247,8 +259,8 @@ export default function Main({ children }: { children: React.ReactNode }) {
     setOpen(true);
     setLoading(true); // サイドメニューを開く時にローディングを開始
     setTimeout(() => {
-      setLoading(false); // 1.5秒後にローディングを終了
-    }, 1850);
+      setLoading(false); // 〜後にローディングを終了
+    }, 1820);
   };
   return (
     <section style={mainBackgroundColor}>

@@ -65,7 +65,7 @@ const mainItems = [
   {
     text: "スキル",
     icon: <CodeTwoToneIcon style={{ color: "white" }} />,
-    path: "/main/skill",
+    path: "/main/skills",
   },
   {
     text: "投稿",

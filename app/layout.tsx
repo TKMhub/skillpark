@@ -1,6 +1,8 @@
+"use client";
 import "../public/globalcss/globals.css";
 import { Inter } from "next/font/google";
 import Head from "next/head";
+import { RecoilRoot } from "recoil";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,7 +27,9 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <body className={inter.className}>{children}</body>
+      <RecoilRoot>
+        <body className={inter.className}>{children}</body>
+      </RecoilRoot>
     </html>
   );
 }

@@ -58,53 +58,59 @@ import Container from "@mui/material/Container";
 import Slide from "@mui/material/Slide";
 import Link from "next/link";
 
+import { RecoilRoot, useRecoilState } from "recoil";
+import { layoutTitle } from "../recoil/atoms/atom";
+
 const drawerWidth = 240;
 const TopAppBarHeight = 64;
 
 const mainItems = [
   {
     text: "スキル",
+    title: "スキル一覧",
     icon: <CodeTwoToneIcon style={{ color: "white" }} />,
     path: "/main/skills",
   },
   {
     text: "投稿",
+    title: "投稿一覧",
     icon: <TocTwoToneIcon style={{ color: "white" }} />,
     path: "/main/post",
   },
   {
     text: "記事",
+    title: "記事一覧",
     icon: <NewspaperTwoToneIcon style={{ color: "white" }} />,
     path: "/main/article",
   },
   {
     text: "学習",
+    title: "学習",
     icon: <SchoolTwoToneIcon style={{ color: "white" }} />,
     path: "/main/learn",
   },
   {
     text: "共有",
+    title: "共有",
     icon: <ShareTwoToneIcon style={{ color: "white" }} />,
     path: "/main/share",
   },
   {
     text: "自動化",
+    title: "自動化",
     icon: <PrecisionManufacturingTwoToneIcon style={{ color: "white" }} />,
     path: "/main/automation",
   },
   {
-    text: "アイディア",
-    icon: <PrecisionManufacturingTwoToneIcon style={{ color: "white" }} />,
-    path: "/main/idea",
-  },
-  {
     text: "教材",
+    title: "教材",
     icon: <AutoStoriesTwoToneIcon style={{ color: "white" }} />,
     path: "/main/books",
   },
 
   {
     text: "資格",
+    title: "資格",
     icon: <MilitaryTechTwoToneIcon style={{ color: "white" }} />,
     path: "/main/qualification",
   },
@@ -245,6 +251,7 @@ function HideOnScroll({
 export default function Main({ children }: { children: React.ReactNode }) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
+  const [title, settitle] = useRecoilState(layoutTitle);
   const [loading, setLoading] = React.useState(false);
 
   const handleDrawerOpen = () => {
@@ -255,7 +262,11 @@ export default function Main({ children }: { children: React.ReactNode }) {
     setOpen(false);
   };
 
-  const handleLoadingOpen = () => {
+  const handleOpen = (title: string) => {
+    // タイトルを変更
+    // Recoilで状態を管理する
+    settitle(title);
+
     setOpen(true);
     setLoading(true); // サイドメニューを開く時にローディングを開始
     setTimeout(() => {
@@ -298,7 +309,7 @@ export default function Main({ children }: { children: React.ReactNode }) {
               <MenuIcon />
             </IconButton>
             <h6>
-              機能タイトルバー
+              {title}
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               ↑画面遷移中のエフェクト（画面遷移を実装したら制御を加える）
             </h6>
@@ -338,7 +349,7 @@ export default function Main({ children }: { children: React.ReactNode }) {
                   href={item.path ?? "/default-path"}
                   passHref
                   key={item.text}
-                  onClick={handleLoadingOpen}
+                  onClick={() => handleOpen(item.title)}
                 >
                   <ListItem
                     key={item.text}

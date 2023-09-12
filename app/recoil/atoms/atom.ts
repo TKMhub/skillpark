@@ -1,8 +1,8 @@
 import { atom } from "recoil";
 
-export const counterState = atom({
-  key: "counterState", // アトムの一意のキー
-  default: 0, // 初期値
+export const layoutTitle = atom({
+  key: "layoutTitle", // アトムの一意のキー
+  default: "", // 初期値
 });
 
 // アトムの作成

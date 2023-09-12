@@ -131,13 +131,13 @@ export default function Home() {
                 </Grid>
               </Grid>
             </motion.div>
-            <a className={styles.Scroll} href="#third">
-              Scroll
+            <a className={styles.ScrollEnd} href="#first">
+              TOP
             </a>
           </section>
 
           {/* セクション -3- */}
-          <section className={styles.contentsWrapper} id="third">
+          {/* <section className={styles.contentsWrapper} id="third">
             <motion.div
               initial="hidden"
               animate="visible"
@@ -168,7 +168,7 @@ export default function Home() {
             <a className={styles.ScrollEnd} href="#first">
               TOP
             </a>
-          </section>
+          </section> */}
         </main>
         <Footer />
       </RecoilRoot>

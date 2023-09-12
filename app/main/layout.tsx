@@ -19,13 +19,6 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import StarIcon from "@mui/icons-material/Star";
-import SendIcon from "@mui/icons-material/Send";
-import DraftsIcon from "@mui/icons-material/Drafts";
-import SettingsIcon from "@mui/icons-material/Settings";
-import AccountBoxIcon from "@mui/icons-material/AccountBox";
-import ListIcon from "@mui/icons-material/List";
 import TocTwoToneIcon from "@mui/icons-material/TocTwoTone";
 import CodeTwoToneIcon from "@mui/icons-material/CodeTwoTone";
 import SchoolTwoToneIcon from "@mui/icons-material/SchoolTwoTone";
@@ -35,30 +28,16 @@ import SettingsTwoToneIcon from "@mui/icons-material/SettingsTwoTone";
 import AutoStoriesTwoToneIcon from "@mui/icons-material/AutoStoriesTwoTone";
 import ShareTwoToneIcon from "@mui/icons-material/ShareTwoTone";
 import PrecisionManufacturingTwoToneIcon from "@mui/icons-material/PrecisionManufacturingTwoTone";
-import RequestQuoteTwoToneIcon from "@mui/icons-material/RequestQuoteTwoTone";
 import NewspaperTwoToneIcon from "@mui/icons-material/NewspaperTwoTone";
 import MilitaryTechTwoToneIcon from "@mui/icons-material/MilitaryTechTwoTone";
-// import TipsAndUpdatesTwoToneIcon from "@mui/icons-material/TipsAndUpd/woTone";
 
 import LinearProgress from "@mui/material/LinearProgress";
-// 月 / 太陽
-import DarkModeTwoToneIcon from "@mui/icons-material/DarkModeTwoTone";
-import WbSunnyTwoToneIcon from "@mui/icons-material/WbSunnyTwoTone";
-// ベル
-import NotificationsNoneTwoToneIcon from "@mui/icons-material/NotificationsNoneTwoTone";
-// サイクル
-import SyncTwoToneIcon from "@mui/icons-material/SyncTwoTone";
-// 目
-import VisibilityTwoToneIcon from "@mui/icons-material/VisibilityTwoTone";
-import VisibilityOffTwoToneIcon from "@mui/icons-material/VisibilityOffTwoTone";
-import { Typography } from "@mui/material";
 
 import useScrollTrigger from "@mui/material/useScrollTrigger";
-import Container from "@mui/material/Container";
 import Slide from "@mui/material/Slide";
 import Link from "next/link";
 
-import { RecoilRoot, useRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 import { layoutTitle } from "../recoil/atoms/atom";
 
 const drawerWidth = 240;
@@ -225,7 +204,6 @@ const Drawer = styled(MuiDrawer, {
 
 const mainBackgroundColor = {
   backgroundColor: "#f2f6fa",
-  height: "100vh",
   width: "100%",
   display: "flex",
 };
@@ -251,8 +229,23 @@ function HideOnScroll({
 export default function Main({ children }: { children: React.ReactNode }) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
-  const [title, settitle] = useRecoilState(layoutTitle);
+  const [title, setTitle] = useRecoilState(layoutTitle);
   const [loading, setLoading] = React.useState(false);
+
+  React.useEffect(() => {
+    // ローカルストレージから状態を読み込む
+    const savedTitle = localStorage.getItem("title");
+    if (savedTitle) {
+      setTitle(savedTitle);
+    }
+  }, []);
+
+  React.useEffect(() => {
+    // 状態が変更されるたびにローカルストレージに保存する
+    if (title) {
+      localStorage.setItem("title", title);
+    }
+  }, [title]);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -265,7 +258,7 @@ export default function Main({ children }: { children: React.ReactNode }) {
   const handleOpen = (title: string) => {
     // タイトルを変更
     // Recoilで状態を管理する
-    settitle(title);
+    setTitle(title);
 
     setOpen(true);
     setLoading(true); // サイドメニューを開く時にローディングを開始
@@ -308,11 +301,7 @@ export default function Main({ children }: { children: React.ReactNode }) {
             >
               <MenuIcon />
             </IconButton>
-            <h6>
-              {title}
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              ↑画面遷移中のエフェクト（画面遷移を実装したら制御を加える）
-            </h6>
+            <h1 className="font-bold">{title}</h1>
           </Toolbar>
         </AppBar>
       </HideOnScroll>

@@ -7,8 +7,8 @@ import FormatAlignJustifyIcon from "@mui/icons-material/FormatAlignJustify";
 import FormatBoldIcon from "@mui/icons-material/FormatBold";
 import FormatItalicIcon from "@mui/icons-material/FormatItalic";
 import FormatUnderlinedIcon from "@mui/icons-material/FormatUnderlined";
-import FormatColorFillIcon from "@mui/icons-material/FormatColorFill";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+// import FormatColorFillIcon from "@mui/icons-material/FormatColorFill";
+// import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import Divider from "@mui/material/Divider";
 import Paper from "@mui/material/Paper";
 import ToggleButton from "@mui/material/ToggleButton";
@@ -74,7 +74,7 @@ export const EditorComponent = () => {
           <ToggleButton value="right" aria-label="right aligned">
             <FormatAlignRightIcon />
           </ToggleButton>
-          <ToggleButton value="justify" aria-label="justified" disabled>
+          <ToggleButton value="justify" aria-label="justified">
             <FormatAlignJustifyIcon />
           </ToggleButton>
         </StyledToggleButtonGroup>
@@ -94,10 +94,10 @@ export const EditorComponent = () => {
           <ToggleButton value="underlined" aria-label="underlined">
             <FormatUnderlinedIcon />
           </ToggleButton>
-          <ToggleButton value="color" aria-label="color" disabled>
+          {/* <ToggleButton value="color" aria-label="color" disabled>
             <FormatColorFillIcon />
             <ArrowDropDownIcon />
-          </ToggleButton>
+          </ToggleButton> */}
         </StyledToggleButtonGroup>
       </Paper>
     </div>

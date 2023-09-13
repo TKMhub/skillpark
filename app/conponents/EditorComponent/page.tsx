@@ -91,21 +91,24 @@ export const EditorComponent = () => {
 
   return (
     <div
-      className="p-3 rounded-md bg-white shadow-md space-y-4"
-      style={{ height: "70vh" }}
+      className="p-3 rounded-md bg-white shadow-md space-y-3"
+      style={{ height: "75vh", overflow: "auto" }}
     >
-      <div>
+      <div className="flex space-x-2">
         {/* タイトル用 */}
         <TextField
           fullWidth
           multiline
-          placeholder="タイトル"
+          placeholder="投稿タイトル"
           rows={1}
           variant="outlined"
           value={textContents}
           onChange={(e) => setTextContents(e.target.value)}
           style={textAreaStyle} // スタイルオブジェクトを適用
         />
+        <Button variant="contained" onClick={handleAddContents}>
+          Post
+        </Button>
       </div>
       <Paper
         elevation={0}
@@ -181,17 +184,9 @@ export const EditorComponent = () => {
           value={textContents}
           onChange={(e) => setTextContents(e.target.value)}
           style={textAreaStyle} // スタイルオブジェクトを適用
-          placeholder="本文"
+          placeholder="本文を入力してください。"
         />
       </div>
-      <Button
-        variant="contained"
-        size="large"
-        style={{ textAlign: "right" }}
-        onClick={handleAddContents}
-      >
-        投稿
-      </Button>
     </div>
   );
 };

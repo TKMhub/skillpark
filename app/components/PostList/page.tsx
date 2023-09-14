@@ -5,13 +5,8 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import ButtonBase from "@mui/material/ButtonBase";
-
-const Img = styled("img")({
-  margin: "auto",
-  display: "block",
-  maxWidth: "50%",
-  maxHeight: "50%",
-});
+import Image from "next/image";
+import ICON from "../../../public/image/skillPark.png";
 
 export default function PostList() {
   return (
@@ -28,7 +23,16 @@ export default function PostList() {
       <Grid container spacing={2}>
         <Grid item>
           <ButtonBase sx={{ width: 128, height: 128 }}>
-            <Img alt="complex" src="/image/skillPark.png" />
+            <Image
+              alt="complex"
+              src={ICON}
+              style={{
+                margin: "auto",
+                display: "block",
+                maxWidth: "50%",
+                maxHeight: "50%",
+              }}
+            />
           </ButtonBase>
         </Grid>
         <Grid item xs={12} sm container>

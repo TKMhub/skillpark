@@ -4,10 +4,10 @@ import styles from "./Top.module.scss";
 import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { Grid, Paper, styled } from "@mui/material";
-import Header from "./conponents/header/Header";
-import CanvasmackbookModel from "./conponents/designParts/Canvas/CanvasmackbookModel";
-import TextEffect from "./conponents/designParts/TextEffect";
-import Footer from "./conponents/footer/Footer";
+import Header from "./components/header/Header";
+import CanvasmackbookModel from "./components/designParts/Canvas/CanvasmackbookModel";
+import TextEffect from "./components/designParts/TextEffect";
+import Footer from "./components/footer/Footer";
 import skillParkLogo from "../public/image/skillPark.svg";
 import Image from "next/image";
 

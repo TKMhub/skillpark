@@ -1,8 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { collection, doc, getDocs, onSnapshot } from "firebase/firestore";
-import { EditorComponent } from "@/app/conponents/EditorComponent/page";
-import PostList from "@/app/conponents/PostList/page";
+import { EditorComponent } from "@/app/components/EditorComponent/EditorComponent";
+import PostList from "@/app/components/PostList/page";
 
 export default function skils() {
   return (

@@ -1,4 +1,3 @@
-import * as React from "react";
 import { styled } from "@mui/material/styles";
 import FormatAlignLeftIcon from "@mui/icons-material/FormatAlignLeft";
 import FormatAlignCenterIcon from "@mui/icons-material/FormatAlignCenter";
@@ -20,6 +19,7 @@ import { Button, TextField } from "@mui/material";
 
 import { collection, addDoc, getFirestore } from "firebase/firestore";
 import { RGIntegerFormat } from "three";
+import React from "react";
 
 const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
   "& .MuiToggleButtonGroup-grouped": {

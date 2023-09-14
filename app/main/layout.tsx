@@ -236,6 +236,7 @@ export default function Main({ children }: { children: React.ReactNode }) {
     if (savedTitle) {
       setTitle(savedTitle);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   React.useEffect(() => {

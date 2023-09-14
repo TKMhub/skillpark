@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 import { styled } from "@mui/material/styles";
 import Grid from "@mui/material/Grid";
@@ -8,8 +9,8 @@ import ButtonBase from "@mui/material/ButtonBase";
 const Img = styled("img")({
   margin: "auto",
   display: "block",
-  maxWidth: "100%",
-  maxHeight: "100%",
+  maxWidth: "50%",
+  maxHeight: "50%",
 });
 
 export default function PostList() {
@@ -27,7 +28,7 @@ export default function PostList() {
       <Grid container spacing={2}>
         <Grid item>
           <ButtonBase sx={{ width: 128, height: 128 }}>
-            <Img alt="complex" src="/static/images/grid/complex.jpg" />
+            <Img alt="complex" src="/image/skillPark.png" />
           </ButtonBase>
         </Grid>
         <Grid item xs={12} sm container>

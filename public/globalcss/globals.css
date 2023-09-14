@@ -25,3 +25,7 @@ body {
   font-family: Roboto sans-serif;
   font-weight: bolder !important;
 }
+
+.MuiBox-root .css-zxdg2z {
+  background-color: #f2f6fa;
+}

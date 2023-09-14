@@ -19,7 +19,7 @@ import { Button, TextField } from "@mui/material";
 
 import { collection, addDoc, getFirestore } from "firebase/firestore";
 import { RGIntegerFormat } from "three";
-import React from "react";
+import React, { useRef } from "react";
 
 const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
   "& .MuiToggleButtonGroup-grouped": {
@@ -37,12 +37,38 @@ const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
   },
 }));
 
-export const EditorComponent = () => {
+export const EditorComponent2 = () => {
   const [alignment, setAlignment] =
     React.useState<React.CSSProperties["textAlign"]>("left");
   const [formats, setFormats] = React.useState<string[]>([]);
+  const [textContentsTitle, setTextContentsTitle] = React.useState("");
   const [textContents, setTextContents] = React.useState("");
   const [contentParts, setContentParts] = React.useState<any[]>([]);
+  const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
+
+  const applyFormat = (format: string) => {
+    if (textAreaRef.current) {
+      const textArea = textAreaRef.current;
+      const start = textArea.selectionStart;
+      const end = textArea.selectionEnd;
+
+      if (start !== end) {
+        const selectedText = textContents.slice(start, end);
+        let formattedText;
+
+        // ここで選択されたテキストに太字やイタリックのフォーマットを適用
+        if (format === "bold") {
+          formattedText = `<b>${selectedText}</b>`;
+        } else if (format === "italic") {
+          formattedText = `<i>${selectedText}</i>`;
+        }
+
+        setTextContents(
+          textContents.slice(0, start) + formattedText + textContents.slice(end)
+        );
+      }
+    }
+  };
 
   // 新しい関数を追加してコンテンツパーツをハンドリング
   const handleAddContentsParts = (
@@ -101,8 +127,8 @@ export const EditorComponent = () => {
           placeholder="投稿タイトル"
           rows={1}
           variant="outlined"
-          value={textContents}
-          onChange={(e) => setTextContents(e.target.value)}
+          value={textContentsTitle}
+          onChange={(e) => setTextContentsTitle(e.target.value)}
           style={textAreaStyle}
         />
         <Button variant="contained" onClick={handleAddContents}>
@@ -158,10 +184,18 @@ export const EditorComponent = () => {
           onChange={handleFormat}
           aria-label="text formatting"
         >
-          <ToggleButton value="bold" aria-label="bold">
+          <ToggleButton
+            value="bold"
+            aria-label="bold"
+            onClick={() => applyFormat("bold")}
+          >
             <FormatBoldIcon />
           </ToggleButton>
-          <ToggleButton value="italic" aria-label="italic">
+          <ToggleButton
+            value="italic"
+            aria-label="italic"
+            onClick={() => applyFormat("italic")}
+          >
             <FormatItalicIcon />
           </ToggleButton>
           <ToggleButton value="underlined" aria-label="underlined">
@@ -183,6 +217,7 @@ export const EditorComponent = () => {
           onChange={(e) => setTextContents(e.target.value)}
           style={textAreaStyle}
           placeholder="本文を入力してください。"
+          inputRef={textAreaRef}
         />
       </div>
     </div>

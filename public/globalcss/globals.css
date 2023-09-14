@@ -5,7 +5,7 @@
 body {
   padding: 0;
   margin: 0;
-  background-color: #f2f6fa;
+  background-color: #f2f6fa !important;
 }
 
 .css-12i7wg6-MuiPaper-root-MuiDrawer-paper {
@@ -26,6 +26,6 @@ body {
   font-weight: bolder !important;
 }
 
-.MuiBox-root .css-zxdg2z {
+/* .MuiBox-root .css-zxdg2z {
   background-color: #f2f6fa;
-}
+} */

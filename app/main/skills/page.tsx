@@ -8,7 +8,7 @@ export default function skils() {
   return (
     <div className="flex">
       <main className="w-1/2">
-        <h2 className="font-bold pb-3 ">自分のスキルを投稿する</h2>
+        <h2 className="font-bold pb-3 ">投稿する</h2>
         <EditorComponent />
       </main>
       <aside className="w-1/2 ml-3">

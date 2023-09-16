@@ -2,11 +2,11 @@
 import React, { useEffect, useState } from "react";
 import { collection, doc, getDocs, onSnapshot } from "firebase/firestore";
 
-export default function gamensenni() {
+export default function manual() {
   return (
     <div>
       <section>
-        <h1>学習 ページ</h1>
+        <h1>マニュアル ページ</h1>
       </section>
     </div>
   );

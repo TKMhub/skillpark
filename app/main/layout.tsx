@@ -66,10 +66,10 @@ const mainItems = [
     path: "/main/roadmap",
   },
   {
-    text: "学習",
-    title: "学習",
+    text: "マニュアル",
+    title: "マニュアル",
     icon: <SchoolTwoToneIcon style={{ color: "white" }} />,
-    // path: "/main/learn",
+    // path: "/main/manual",
   },
   {
     text: "共有",
@@ -107,7 +107,7 @@ const subItems = [
     text: "Contact",
     title: "Contact",
     icon: <SendTwoToneIcon style={{ color: "white" }} />,
-    // path: "/main/contact",
+    path: "/main/contact",
   },
   {
     text: "Settings",
@@ -266,7 +266,8 @@ export default function Main({ children }: { children: React.ReactNode }) {
       title === "ポスト" ||
       title === "プロジェクト" ||
       title === "ロードマップ" ||
-      title === "テンプレート"
+      title === "テンプレート" ||
+      title === "Contact"
     ) {
       // タイトルを変更
       // Recoilで状態を管理する

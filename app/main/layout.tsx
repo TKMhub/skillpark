@@ -40,7 +40,7 @@ import Slide from "@mui/material/Slide";
 import Link from "next/link";
 
 import { useRecoilState } from "recoil";
-import { layoutTitle } from "../recoil/atoms/atom";
+import { alertDialogSlide, layoutTitle } from "../recoil/atoms/atom";
 import AlertDialogSlide from "../components/AlertDialogSlide/AlertDialogSlide";
 
 const drawerWidth = 240;
@@ -69,49 +69,51 @@ const mainItems = [
     text: "学習",
     title: "学習",
     icon: <SchoolTwoToneIcon style={{ color: "white" }} />,
-    path: "/main/learn",
+    // path: "/main/learn",
   },
   {
     text: "共有",
     title: "共有",
     icon: <ShareTwoToneIcon style={{ color: "white" }} />,
-    path: "/main/share",
+    // path: "/main/share",
   },
   {
     text: "自動化",
     title: "自動化",
     icon: <PrecisionManufacturingTwoToneIcon style={{ color: "white" }} />,
-    path: "/main/automation",
+    // path: "/main/automation",
   },
   {
     text: "教材",
     title: "教材",
     icon: <AutoStoriesTwoToneIcon style={{ color: "white" }} />,
-    path: "/main/books",
+    // path: "/main/books",
   },
-
   {
     text: "資格",
     title: "資格",
     icon: <MilitaryTechTwoToneIcon style={{ color: "white" }} />,
-    path: "/main/qualification",
+    // path: "/main/qualification",
   },
 ];
 const subItems = [
   {
-    text: "Profile ",
+    text: "Profile",
+    title: "Profile",
     icon: <AccountBoxTwoToneIcon style={{ color: "white" }} />,
-    path: "/main/profile",
+    // path: "/main/profile",
   },
   {
     text: "Contact",
+    title: "Contact",
     icon: <SendTwoToneIcon style={{ color: "white" }} />,
-    path: "/main/contact",
+    // path: "/main/contact",
   },
   {
     text: "Settings",
+    title: "Settings",
     icon: <SettingsTwoToneIcon style={{ color: "white" }} />,
-    path: "/main/settings",
+    // path: "/main/settings",
   },
 ];
 
@@ -231,6 +233,8 @@ export default function Main({ children }: { children: React.ReactNode }) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
   const [title, setTitle] = useRecoilState(layoutTitle);
+  const [alertTitle, setAlertTitle] = React.useState("");
+  const [alertDialog, setAlertDialog] = useRecoilState(alertDialogSlide);
   const [loading, setLoading] = React.useState(false);
 
   React.useEffect(() => {
@@ -274,12 +278,13 @@ export default function Main({ children }: { children: React.ReactNode }) {
       }, 1820);
     } else {
       // AlertDialogSlideコンポーネントを表示
-      setTitle(title);
+      setAlertTitle(title);
+      setAlertDialog(true);
     }
   };
   return (
     <section style={mainBackgroundColor}>
-      <AlertDialogSlide alertDetail={title} />
+      {alertDialog ? <AlertDialogSlide alertDetail={alertTitle} /> : null}
       <CssBaseline />
       {/* TOPバー */}
       <TopAppBar position="fixed" sx={{ height: `${TopAppBarHeight}px` }}>
@@ -347,7 +352,7 @@ export default function Main({ children }: { children: React.ReactNode }) {
             <List>
               {mainItems.map((item) => (
                 <Link
-                  href={item.path ?? "/default-path"}
+                  href={item.path ?? ""}
                   passHref
                   key={item.text}
                   onClick={() => handleOpen(item.title)}
@@ -386,36 +391,43 @@ export default function Main({ children }: { children: React.ReactNode }) {
           <Divider />
           <List>
             {subItems.map((item) => (
-              <ListItem
+              <Link
+                href={item.path ?? ""}
+                passHref
                 key={item.text}
-                disablePadding
-                sx={{
-                  display: "block",
-                  marginTop: "20px",
-                }}
+                onClick={() => handleOpen(item.title)}
               >
-                <ListItemButton
+                <ListItem
+                  key={item.text}
+                  disablePadding
                   sx={{
-                    minHeight: 48,
-                    justifyContent: open ? "initial" : "center",
-                    px: 2.5,
+                    display: "block",
+                    marginTop: "20px",
                   }}
                 >
-                  <ListItemIcon
+                  <ListItemButton
                     sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : "auto",
-                      justifyContent: "center",
+                      minHeight: 48,
+                      justifyContent: open ? "initial" : "center",
+                      px: 2.5,
                     }}
                   >
-                    {item.icon}
-                  </ListItemIcon>
-                  <ListItemText
-                    primary={item.text}
-                    sx={{ opacity: open ? 1 : 0 }}
-                  />
-                </ListItemButton>
-              </ListItem>
+                    <ListItemIcon
+                      sx={{
+                        minWidth: 0,
+                        mr: open ? 3 : "auto",
+                        justifyContent: "center",
+                      }}
+                    >
+                      {item.icon}
+                    </ListItemIcon>
+                    <ListItemText
+                      primary={item.text}
+                      sx={{ opacity: open ? 1 : 0 }}
+                    />
+                  </ListItemButton>
+                </ListItem>
+              </Link>
             ))}
           </List>
         </Drawer>

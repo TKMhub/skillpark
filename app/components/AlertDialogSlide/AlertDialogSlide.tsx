@@ -7,6 +7,8 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
 import { TransitionProps } from "@mui/material/transitions";
+import { alertDialogSlide } from "@/app/recoil/atoms/atom";
+import { useRecoilState } from "recoil";
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -19,9 +21,11 @@ const Transition = React.forwardRef(function Transition(
 
 export default function AlertDialogSlide({ alertDetail }: any) {
   const [open, setOpen] = React.useState(true);
+  const [alertDialog, setAlertDialog] = useRecoilState(alertDialogSlide);
 
   const handleClose = () => {
     setOpen(false);
+    setAlertDialog(false);
   };
 
   return (
@@ -35,12 +39,13 @@ export default function AlertDialogSlide({ alertDetail }: any) {
       >
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
-            「{alertDetail}」の機能は未作成です。
+            「{alertDetail}」機能は未作成です。
             是非、開発のご協力をお願いします。
+            <br />
+            「Contact」画面より、お問い合わせください。
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          {/* <Button onClick={handleClose}>Disagree</Button> */}
           <Button onClick={handleClose}>閉じる</Button>
         </DialogActions>
       </Dialog>

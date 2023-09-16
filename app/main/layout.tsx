@@ -24,6 +24,8 @@ import CodeTwoToneIcon from "@mui/icons-material/CodeTwoTone";
 import SchoolTwoToneIcon from "@mui/icons-material/SchoolTwoTone";
 import AccountBoxTwoToneIcon from "@mui/icons-material/AccountBoxTwoTone";
 import SendTwoToneIcon from "@mui/icons-material/SendTwoTone";
+import AccountTreeTwoToneIcon from "@mui/icons-material/AccountTreeTwoTone";
+import DirectionsWalkRoundedIcon from "@mui/icons-material/DirectionsWalkRounded";
 import SettingsTwoToneIcon from "@mui/icons-material/SettingsTwoTone";
 import AutoStoriesTwoToneIcon from "@mui/icons-material/AutoStoriesTwoTone";
 import ShareTwoToneIcon from "@mui/icons-material/ShareTwoTone";
@@ -45,22 +47,22 @@ const TopAppBarHeight = 64;
 
 const mainItems = [
   {
-    text: "スキル",
-    title: "スキル一覧",
-    icon: <CodeTwoToneIcon style={{ color: "white" }} />,
-    path: "/main/skills",
-  },
-  {
-    text: "投稿",
-    title: "投稿一覧",
+    text: "ポスト",
+    title: "ポスト",
     icon: <TocTwoToneIcon style={{ color: "white" }} />,
     path: "/main/post",
   },
   {
-    text: "記事",
-    title: "記事一覧",
-    icon: <NewspaperTwoToneIcon style={{ color: "white" }} />,
-    path: "/main/article",
+    text: "プロジェクト",
+    title: "プロジェクト",
+    icon: <AccountTreeTwoToneIcon style={{ color: "white" }} />,
+    path: "/main/project",
+  },
+  {
+    text: "ロードマップ",
+    title: "ロードマップ",
+    icon: <DirectionsWalkRoundedIcon style={{ color: "white" }} />,
+    path: "/main/roadmap",
   },
   {
     text: "学習",
@@ -255,15 +257,24 @@ export default function Main({ children }: { children: React.ReactNode }) {
   };
 
   const handleOpen = (title: string) => {
-    // タイトルを変更
-    // Recoilで状態を管理する
-    setTitle(title);
-
-    setOpen(true);
-    setLoading(true); // サイドメニューを開く時にローディングを開始
-    setTimeout(() => {
-      setLoading(false); // 〜後にローディングを終了
-    }, 1820);
+    if (
+      title === "ポスト" ||
+      title === "プロジェクト" ||
+      title === "ロードマップ" ||
+      title === "テンプレート"
+    ) {
+      // タイトルを変更
+      // Recoilで状態を管理する
+      setTitle(title);
+      setOpen(true);
+      setLoading(true); // サイドメニューを開く時にローディングを開始
+      setTimeout(() => {
+        setLoading(false); // 〜後にローディングを終了
+      }, 1820);
+    } else {
+      // AlertDialogSlideコンポーネントを表示
+      setTitle(title);
+    }
   };
   return (
     <section style={mainBackgroundColor}>

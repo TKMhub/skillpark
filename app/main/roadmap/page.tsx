@@ -2,11 +2,11 @@
 import React, { useEffect, useState } from "react";
 import { collection, doc, getDocs, onSnapshot } from "firebase/firestore";
 
-export default function gamensenni() {
+export default function roadmap() {
   return (
     <div>
       <section>
-        <h1>記事 ページ</h1>
+        <h1>ロードマップ ページ</h1>
       </section>
     </div>
   );

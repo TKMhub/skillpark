@@ -41,6 +41,7 @@ import Link from "next/link";
 
 import { useRecoilState } from "recoil";
 import { layoutTitle } from "../recoil/atoms/atom";
+import AlertDialogSlide from "../components/AlertDialogSlide/AlertDialogSlide";
 
 const drawerWidth = 240;
 const TopAppBarHeight = 64;
@@ -278,6 +279,7 @@ export default function Main({ children }: { children: React.ReactNode }) {
   };
   return (
     <section style={mainBackgroundColor}>
+      <AlertDialogSlide alertDetail={title} />
       <CssBaseline />
       {/* TOPバー */}
       <TopAppBar position="fixed" sx={{ height: `${TopAppBarHeight}px` }}>

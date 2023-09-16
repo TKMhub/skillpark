@@ -33,11 +33,10 @@ export default function AlertDialogSlide({ alertDetail }: any) {
         onClose={handleClose}
         aria-describedby="alert-dialog-slide-description"
       >
-        <DialogTitle>{"Use Google's location service?"}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
             「{alertDetail}」の機能は未作成です。
-            ぜひ、開発のご協力をお願いします。
+            是非、開発のご協力をお願いします。
           </DialogContentText>
         </DialogContent>
         <DialogActions>

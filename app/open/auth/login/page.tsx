@@ -6,6 +6,9 @@ import Link from "next/link";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { app } from "../../../firebase";
 import { useRouter } from "next/navigation";
+import BackdropCircle from "@/app/components/designParts/BackdropCircle";
+import { useRecoilState } from "recoil";
+import { backdropCircle } from "@/app/recoil/atoms/atom";
 // import Image from "next/image";
 // import skillParkLogo from "../../../../public/image/skillPark.svg";
 
@@ -55,6 +58,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const emailRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
+  const [isLoading, setIsLoading] = useRecoilState(backdropCircle);
 
   useEffect(() => {
     emailRef.current?.focus();
@@ -68,21 +72,42 @@ const Login = () => {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  interface FirebaseError {
+    code: string;
+    message: string;
+  }
+
+  const isFirebaseError = (error: any): error is FirebaseError => {
+    return error.code !== undefined && error.message !== undefined;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    setIsLoading(true); // API通信を開始する前にローディングを true に設定
     e.preventDefault();
     console.log("login action");
     const auth = getAuth(app);
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        console.log("login success");
-        router.push("/main");
-      })
-      .catch((error) => {
+    try {
+      // signInWithEmailAndPassword 関数を await で呼び出し
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      console.log("login success");
+      router.push("/main");
+    } catch (error) {
+      if (isFirebaseError(error)) {
         console.log("login failed");
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
-      });
+      } else {
+        console.log(error);
+      }
+    } finally {
+      // 通信が終了したら（成功/失敗に関わらず）ローディングを false に設定
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -137,6 +162,7 @@ const Login = () => {
           <Link href="/open/auth/password">パスワードをお忘れですか？</Link>
         </Typography>
       </LoginContainer>
+      <BackdropCircle />
     </>
   );
 };

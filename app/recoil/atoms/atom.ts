@@ -10,6 +10,11 @@ export const alertDialogSlide = atom({
   default: false, // 初期値
 });
 
+export const backdropCircle = atom({
+  key: "backdropCircle", // アトムの一意のキー
+  default: false, // 初期値
+});
+
 // アトムの作成
 // Recoilのアトムは、状態の最小単位です。アトムはアプリケーションのどのコンポーネントからもアクセス・更新が可能です。
 

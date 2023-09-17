@@ -21,7 +21,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import TocTwoToneIcon from "@mui/icons-material/TocTwoTone";
 import CodeTwoToneIcon from "@mui/icons-material/CodeTwoTone";
-import SchoolTwoToneIcon from "@mui/icons-material/SchoolTwoTone";
+import DescriptionIcon from "@mui/icons-material/Description";
 import AccountBoxTwoToneIcon from "@mui/icons-material/AccountBoxTwoTone";
 import SendTwoToneIcon from "@mui/icons-material/SendTwoTone";
 import AccountTreeTwoToneIcon from "@mui/icons-material/AccountTreeTwoTone";
@@ -68,7 +68,7 @@ const mainItems = [
   {
     text: "マニュアル",
     title: "マニュアル",
-    icon: <SchoolTwoToneIcon style={{ color: "white" }} />,
+    icon: <DescriptionIcon style={{ color: "white" }} />,
     // path: "/main/manual",
   },
   {

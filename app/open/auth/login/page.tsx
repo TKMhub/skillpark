@@ -94,7 +94,8 @@ const Login = () => {
         password
       );
       console.log("login success");
-      router.push("/main");
+      localStorage.setItem("title", "ポスト");
+      router.push("/main/post");
     } catch (error) {
       if (isFirebaseError(error)) {
         console.log("login failed");

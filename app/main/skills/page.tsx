@@ -1,10 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-import { Editor, EditorState } from "draft-js";
 import "draft-js/dist/Draft.css";
 import { collection, doc, getDocs, onSnapshot } from "firebase/firestore";
-import EditorComponent from "@/app/conponents/EditorComponent/page";
+import { EditorComponent } from "@/app/components/EditorComponent/EditorComponent";
 
 export default function skils() {
   return (

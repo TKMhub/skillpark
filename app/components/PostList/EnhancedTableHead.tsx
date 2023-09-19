@@ -22,41 +22,32 @@ import FilterListIcon from "@mui/icons-material/FilterList";
 import { visuallyHidden } from "@mui/utils";
 
 interface Data {
-  date: number;
-  carbs: number;
-  fat: number;
   articleTitle: string;
+  date: number;
+  user: string;
 }
 
-function createData(
-  articleTitle: string,
-  date: number,
-  fat: number,
-  carbs: number
-): Data {
+function createData(articleTitle: string, date: number, user: string): Data {
   return {
     articleTitle,
     date,
-    fat,
-    carbs,
+    user,
   };
 }
 
 // 内容
 const rows = [
-  createData("テスト", 20230923, 3.7, 67),
-  createData("テスト", 20230923, 25.0, 51),
-  createData("テスト", 20230923, 16.0, 24),
-  createData("テスト", 20230923, 6.0, 24),
-  createData("テスト", 20230923, 16.0, 49),
-  createData("テスト", 20230923, 3.2, 87),
-  createData("テスト", 20230923, 9.0, 37),
-  createData("テスト", 20230923, 0.0, 94),
-  createData("テスト", 20230923, 26.0, 65),
-  createData("テスト", 20230923, 0.2, 98),
-  createData("テスト", 20230923, 0, 81),
-  createData("テスト", 20230923, 19.0, 9),
-  createData("テスト", 20230923, 18.0, 63),
+  createData("テスト", 20230921, "ユーザー"),
+  createData("テスト", 20230922, "ユーザー"),
+  createData("テスト", 20230923, "ユーザー"),
+  createData("テスト", 20230924, "ユーザー"),
+  createData("テスト", 20230925, "ユーザー"),
+  createData("テスト", 20230926, "ユーザー"),
+  createData("テスト", 20230927, "ユーザー"),
+  createData("テスト", 20230928, "ユーザー"),
+  createData("テスト", 20230929, "ユーザー"),
+  createData("テスト", 20230930, "ユーザー"),
+  createData("テスト", 20230931, "ユーザー"),
 ];
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
@@ -83,10 +74,6 @@ function getComparator<Key extends keyof any>(
     : (a, b) => -descendingComparator(a, b, orderBy);
 }
 
-// Since 2020 all major browsers ensure sort stability with Array.prototype.sort().
-// stableSort() brings sort stability to non-modern browsers (notably IE11). If you
-// only support modern browsers you can replace stableSort(exampleArray, exampleComparator)
-// with exampleArray.slice().sort(exampleComparator)
 function stableSort<T>(
   array: readonly T[],
   comparator: (a: T, b: T) => number
@@ -123,16 +110,10 @@ const headCells: readonly HeadCell[] = [
     label: "日付",
   },
   {
-    id: "fat",
+    id: "user",
     numeric: true,
     disablePadding: false,
-    label: "Fat (g)",
-  },
-  {
-    id: "carbs",
-    numeric: true,
-    disablePadding: false,
-    label: "Carbs (g)",
+    label: "ユーザー",
   },
 ];
 
@@ -315,7 +296,6 @@ export default function EnhancedTable() {
   const isSelected = (articleTitle: string) =>
     selected.indexOf(articleTitle) !== -1;
 
-  // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
@@ -330,11 +310,11 @@ export default function EnhancedTable() {
 
   return (
     <div style={{ width: "100%" }}>
-      <Paper sx={{ width: "100%", mb: 2 }}>
+      <Paper>
         <EnhancedTableToolbar numSelected={selected.length} />
-        <TableContainer>
+        <TableContainer style={{ padding: "30px" }}>
           <Table
-            sx={{ minWidth: 750 }}
+            sx={{ minWidth: "100%" }}
             aria-labelledby="tableTitle"
             size={dense ? "small" : "medium"}
           >
@@ -371,8 +351,7 @@ export default function EnhancedTable() {
                       {row.articleTitle}
                     </TableCell>
                     <TableCell align="right">{row.date}</TableCell>
-                    <TableCell align="right">{row.fat}</TableCell>
-                    <TableCell align="right">{row.carbs}</TableCell>
+                    <TableCell align="right">{row.user}</TableCell>
                   </TableRow>
                 );
               })}
@@ -382,7 +361,7 @@ export default function EnhancedTable() {
                     height: (dense ? 33 : 53) * emptyRows,
                   }}
                 >
-                  <TableCell colSpan={6} />
+                  <TableCell colSpan={5} />
                 </TableRow>
               )}
             </TableBody>

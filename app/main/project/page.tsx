@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { collection, doc, getDocs, onSnapshot } from "firebase/firestore";
 import { EditorComponent } from "@/app/components/EditorComponent/EditorComponent";
-import PostList from "@/app/components/PostList/page";
+import PostList from "@/app/components/PostList/PostList";
 
 export default function skils() {
   return (
